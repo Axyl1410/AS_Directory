@@ -5,7 +5,7 @@ import Link from "next/link";
 const Navbar = async () => {
   const session = await auth();
   return (
-    <div className="flex h-[80px] w-full items-center justify-between bg-white px-5 py-3">
+    <div className="flex h-[80px] w-full items-center justify-between bg-white-100 px-5 py-3">
       <Link href="/">
         <Image src="/logo.png" alt="Logo" width={144} height={30} />
       </Link>
@@ -23,13 +23,15 @@ const Navbar = async () => {
                 Sign Out
               </button>
             </form>
-            <Image
-              src={session.user.image || "/default-profile.png"}
-              alt="Profile"
-              width={36}
-              height={36}
-              className="rounded-full"
-            />
+            <Link href={`/user/${session.user.name}`}>
+              <Image
+                src={session.user.image || "/default-profile.png"}
+                alt="Profile"
+                width={36}
+                height={36}
+                className="rounded-full"
+              />
+            </Link>
           </div>
         ) : (
           <form
