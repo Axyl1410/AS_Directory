@@ -18,10 +18,10 @@ const Hero = () => {
             </p>
             <div className="relative w-full max-w-[700px]">
               <input
-                className="h-[40px] w-full rounded-full border-2 border-black px-5 py-2 pr-[50px] text-lg font-bold text-black placeholder-black md:h-[60px] md:border-[5px] md:pr-[70px] md:text-[24px] 2xl:h-[80px]"
+                className="h-[40px] w-full rounded-full border-2 border-black px-5 py-2 pr-[50px] text-lg font-bold text-black placeholder-black outline-none md:h-[60px] md:border-[5px] md:pr-[70px] md:text-[24px] 2xl:h-[80px]"
                 placeholder="Search..."
               />
-              <button className="absolute right-0 top-1/2 flex h-[25px] w-[25px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black md:h-[40px] md:w-[40px] 2xl:h-[50px] 2xl:w-[50px]">
+              <button className="absolute right-0 top-1/2 flex h-[25px] w-[25px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black transition-colors hover:bg-black-100 md:h-[40px] md:w-[40px] 2xl:h-[50px] 2xl:w-[50px]">
                 <svg
                   className="h-[13px] w-[12px] md:h-[17px] md:w-[18px] 2xl:h-[20px] 2xl:w-[21px]"
                   viewBox="0 0 21 20"
