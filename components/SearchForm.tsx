@@ -21,7 +21,7 @@ const SearchForm = ({ query }: { query?: string }) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <Link href={"/"}>
+                <Link href={"/"} scroll={false}>
                   <button
                     className="flex h-[25px] w-[25px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black transition-colors hover:bg-red-700 md:h-[40px] md:w-[40px] 2xl:h-[50px] 2xl:w-[50px]"
                     type="button"

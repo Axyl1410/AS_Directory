@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -26,8 +27,9 @@ export default function SkeletonImage({
   return (
     <div
       className={cn(
-        `overflow-hidden bg-[#ccc] shadow-md w-${width}`,
+        `overflow-hidden bg-[#ccc] shadow-md w-[${width}]`,
         pulsing ? "animate-pulse" : "",
+        className,
       )}
     >
       <motion.img
@@ -42,7 +44,7 @@ export default function SkeletonImage({
         }}
         onLoad={imageLoaded}
         src={src}
-        className={cn("block", className)}
+        className="block"
       />
     </div>
   );
