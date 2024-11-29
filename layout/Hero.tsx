@@ -5,7 +5,7 @@ import Image from "next/image";
 const Hero = ({ query }: { query?: string }) => {
   return (
     <div className="h-[531px] w-full">
-      <GridBackground background="bg-primary">
+      <GridBackground>
         <div className="container flex items-center justify-center px-4">
           <div className="flex flex-col items-center justify-center gap-4 text-center">
             <Image src="/Group.png" alt="" height={45} width={270}></Image>
