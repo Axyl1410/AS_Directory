@@ -1,7 +1,8 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface SkeletonImageProps {
   src: string;
@@ -19,20 +20,27 @@ export default function SkeletonImage({
   const [imageLoading, setImageLoading] = useState(true);
   const [pulsing, setPulsing] = useState(true);
 
+  useEffect(() => {
+    if (!imageLoading) {
+      const timer = setTimeout(() => setPulsing(false), 600);
+      return () => clearTimeout(timer);
+    }
+  }, [imageLoading]);
+
   const imageLoaded = () => {
     setImageLoading(false);
-    setTimeout(() => setPulsing(false), 600);
   };
 
   return (
     <div
       className={cn(
-        `overflow-hidden bg-[#ccc] shadow-md w-[${width}]`,
+        `overflow-hidden bg-[#ccc] shadow-md`,
         pulsing ? "animate-pulse" : "",
         className,
+        `w-[${width}] h-[${height}]`,
       )}
     >
-      <motion.img
+      <motion.div
         initial={{ height: "0px", opacity: 0 }}
         animate={{
           height: imageLoading ? height : "auto",
@@ -42,10 +50,16 @@ export default function SkeletonImage({
           height: { delay: 0, duration: 0.4 },
           opacity: { delay: 0.5, duration: 0.4 },
         }}
-        onLoad={imageLoaded}
-        src={src}
-        className="block"
-      />
+      >
+        <Image
+          alt=""
+          onLoadingComplete={imageLoaded}
+          src={src}
+          layout="fill"
+          objectFit="cover"
+          className={cn("static block", className)}
+        />
+      </motion.div>
     </div>
   );
 }

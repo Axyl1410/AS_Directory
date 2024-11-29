@@ -26,8 +26,7 @@ export default async function Home({
       author: { _id: 1, name: "John Doe" },
       _id: 1,
       description: "This is a description",
-      image:
-        "https://images.unsplash.com/photo-1731927321922-1df90db6a286?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: "https://nguyentruonggiang.id.vn/image/img1.jfif",
       category: "Robots",
       title: "We Robots",
     },
@@ -38,8 +37,8 @@ export default async function Home({
       <Navbar />
       <Hero query={query} />
       <section className="px-4">
-        <div className="container flex flex-col justify-center py-12">
-          <div className="pb-12 text-[30px] font-semibold">
+        <div className="container flex flex-col justify-center py-8 sm:py-12">
+          <div className="pb-8 text-[24px] font-semibold sm:pb-12 sm:text-[30px]">
             {query ? (
               <h1>Search results for {query}</h1>
             ) : (

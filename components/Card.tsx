@@ -26,9 +26,9 @@ const Card = ({
   title,
 }: CardProps) => {
   return (
-    <div className="flex flex-col gap-4 rounded-3xl border-4 border-b-8 border-r-8 border-black bg-white p-4 font-work-sans">
+    <div className="group flex flex-col gap-4 rounded-3xl border-4 border-b-8 border-r-8 border-black bg-white p-4 font-work-sans transition-colors hover:border-primary hover:bg-primary-100">
       <div className="flex w-full items-center justify-between">
-        <p className="rounded-full bg-primary-100 p-2.5 font-medium">
+        <p className="rounded-full bg-primary-100 p-2.5 font-medium transition-colors group-hover:bg-white">
           {formatDate(_createdAt)}
         </p>
         <div className="flex gap-1">
