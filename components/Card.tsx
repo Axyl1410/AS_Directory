@@ -1,15 +1,10 @@
 import { formatDate } from "@/lib/utils";
-import SkeletonImage from "./SkeletonImage";
-
-interface Author {
-  _id: number;
-  name: string;
-}
+import SkeletonImage from "./skeleton-image";
 
 interface CardProps {
   _createdAt: Date;
   views: number;
-  author: Author;
+  author: { _id: number; name: string; image: string };
   description: string;
   image: string;
   category: string;
@@ -63,7 +58,7 @@ const Card = ({
           <p className="text-2xl font-semibold">{title}</p>
         </div>
         <SkeletonImage
-          src={image}
+          src={author.image}
           width="40px"
           height="40px"
           className="aspect-square rounded-full object-cover"
@@ -72,7 +67,6 @@ const Card = ({
       <div>{description}</div>
       <SkeletonImage
         className="aspect-video rounded-lg object-cover"
-        height="150px"
         src={image}
       />
       <div className="flex items-center justify-between">

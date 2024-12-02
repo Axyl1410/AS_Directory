@@ -1,11 +1,11 @@
-import Card from "@/components/Card";
-import Hero from "@/layout/Hero";
-import Navbar from "@/layout/Navbar";
+import Card from "@/components/card";
+import Hero from "@/layout/hero";
+import Navbar from "@/layout/navbar";
 
 interface Post {
   _createdAt: Date;
   views: number;
-  author: { _id: number; name: string };
+  author: { _id: number; name: string; image: string };
   _id: number;
   description: string;
   image: string;
@@ -23,10 +23,15 @@ export default async function Home({
     {
       _createdAt: new Date(),
       views: 55,
-      author: { _id: 1, name: "John Doe" },
+      author: {
+        _id: 1,
+        name: "John Doe",
+        image: "https://nguyentruonggiang.id.vn/image/img1.jfif",
+      },
       _id: 1,
       description: "This is a description",
-      image: "https://nguyentruonggiang.id.vn/image/img1.jfif",
+      image:
+        "https://images.unsplash.com/photo-1732692695680-f4c37b5bbbea?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       category: "Robots",
       title: "We Robots",
     },
