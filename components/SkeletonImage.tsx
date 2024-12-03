@@ -53,7 +53,7 @@ export default function SkeletonImage({
       >
         <Image
           alt=""
-          onLoadingComplete={imageLoaded}
+          onLoad={imageLoaded}
           src={src}
           layout="fill"
           objectFit="cover"

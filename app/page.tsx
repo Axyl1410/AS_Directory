@@ -30,6 +30,36 @@ export default async function Home({
       category: "Robots",
       title: "We Robots",
     },
+    {
+      _createdAt: new Date(),
+      views: 55,
+      author: { _id: 1, name: "John Doe" },
+      _id: 2,
+      description: "This is a description",
+      image: "https://nguyentruonggiang.id.vn/image/img1.jfif",
+      category: "Robots",
+      title: "We Robots",
+    },
+    {
+      _createdAt: new Date(),
+      views: 55,
+      author: { _id: 1, name: "John Doe" },
+      _id: 3,
+      description: "This is a description",
+      image: "https://nguyentruonggiang.id.vn/image/img1.jfif",
+      category: "Robots",
+      title: "We Robots",
+    },
+    {
+      _createdAt: new Date(),
+      views: 55,
+      author: { _id: 1, name: "John Doe" },
+      _id: 4,
+      description: "This is a description",
+      image: "https://nguyentruonggiang.id.vn/image/img1.jfif",
+      category: "Robots",
+      title: "We Robots",
+    },
   ];
 
   return (
