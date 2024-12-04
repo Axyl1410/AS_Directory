@@ -1,4 +1,5 @@
 import { auth, signIn, signOut } from "@/auth";
+import { LogOut } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -23,20 +24,7 @@ const Navbar = async () => {
                 <button className="text-primary" type="submit">
                   <p className="hidden xs:block">Sign Out</p>
                   <div className="xs:hidden">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      className="h-6 w-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1"
-                      />
-                    </svg>
+                    <LogOut size={20} />
                   </div>
                 </button>
               </form>
