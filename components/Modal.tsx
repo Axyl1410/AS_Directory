@@ -1,5 +1,9 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
-import React from "react";
+import { X } from "lucide-react";
+import dynamic from "next/dynamic";
+import React, { useCallback } from "react";
 import ReactDOM from "react-dom";
 
 interface ModalProps {
@@ -9,6 +13,13 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+  const handleBackdropClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (e.target === e.currentTarget) onClose();
+    },
+    [onClose],
+  );
+
   return ReactDOM.createPortal(
     <AnimatePresence>
       {isOpen && (
@@ -18,21 +29,29 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           className="fixed inset-0 z-50"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
         >
-          <div className="flex h-full w-full items-center justify-center bg-black bg-opacity-50">
+          <div
+            className="flex h-full w-full items-center justify-center bg-black/80 backdrop-blur-md"
+            onClick={handleBackdropClick}
+          >
             <motion.div
               initial={{ scale: 0.5 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
               transition={{ duration: 0.3, type: "spring" }}
-              className="dark:bg-dark relative mx-4 flex w-1/2 items-center justify-center rounded border border-gray-500 bg-white p-6 shadow-lg md:w-1/3"
+              className="relative mx-4 flex items-center justify-center rounded border bg-black p-8 text-white shadow-lg"
             >
               <button
                 onClick={onClose}
-                className="absolute -top-2 right-1 text-4xl"
+                className="absolute right-1 top-1 flex aspect-square text-center text-4xl"
+                aria-label="Close modal"
               >
-                &times;
+                <X className="h-5 w-5" />
               </button>
+
               {children}
             </motion.div>
           </div>
@@ -43,4 +62,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   );
 };
 
-export default Modal;
+Modal.displayName = "Modal";
+
+export default dynamic(() => Promise.resolve(React.memo(Modal)), {
+  ssr: false,
+});
