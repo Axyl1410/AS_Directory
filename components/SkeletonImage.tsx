@@ -55,9 +55,8 @@ export default function SkeletonImage({
           alt=""
           onLoad={imageLoaded}
           src={src}
-          layout="fill"
-          objectFit="cover"
-          className={cn("static block", className)}
+          fill
+          className={cn("static block object-cover", className)}
         />
       </motion.div>
     </div>
