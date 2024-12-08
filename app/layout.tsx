@@ -1,9 +1,9 @@
-import ServerNavbar from "@/layout/server-navbar";
 import { cn } from "@/lib/utils";
 import "easymde/dist/easymde.min.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "./../components/theme/theme-context";
 import "./globals.css";
 
 const workSans = localFont({
@@ -70,7 +70,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn("antialiased", workSans.variable)}>
         <Toaster closeButton richColors position="top-left" />
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
