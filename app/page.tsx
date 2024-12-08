@@ -1,5 +1,3 @@
-import Card from "@/components/Card";
-import Hero from "@/layout/Hero";
 import Navbar from "@/layout/Navbar";
 
 interface Post {
@@ -65,7 +63,7 @@ export default async function Home({
   return (
     <>
       <Navbar />
-      <Hero query={query} />
+      {/* <Hero query={query} />
       <section className="px-4">
         <div className="container flex flex-col justify-center py-8 sm:py-12">
           <div className="pb-8 text-[24px] font-semibold sm:pb-12 sm:text-[30px]">
@@ -83,7 +81,7 @@ export default async function Home({
             )}
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }
