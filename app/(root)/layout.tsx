@@ -1,4 +1,4 @@
-import ServerNavbar from "@/layout/server-navbar";
+import Navbar from "@/layout/navbar";
 
 export default function DashboardLayout({
   children,
@@ -7,7 +7,7 @@ export default function DashboardLayout({
 }) {
   return (
     <>
-      <ServerNavbar />
+      <Navbar />
       {children}
     </>
   );

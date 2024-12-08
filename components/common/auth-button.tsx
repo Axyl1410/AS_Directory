@@ -2,6 +2,7 @@
 
 import { LogOut, UserIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 
 const AuthButton = () => {
@@ -12,7 +13,13 @@ const AuthButton = () => {
         <div className="flex w-full items-center justify-between">
           <Link href="/profile">
             <div className="flex items-center gap-2.5">
-              <UserIcon size={22} />
+              <Image
+                alt="avt"
+                src={`${session.user.image}`}
+                height={24}
+                width={24}
+                className="rounded-full object-cover"
+              />
               <p>{session.user.name}</p>
             </div>
           </Link>
@@ -33,9 +40,3 @@ const AuthButton = () => {
 };
 
 export default AuthButton;
-// <Link href="/api/auth/signin">
-//   <a className="flex items-center gap-2.5">
-//     <UserIcon size={22} />
-//     <p>Sign in</p>
-//   </a>
-// </Link>

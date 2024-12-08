@@ -8,7 +8,7 @@ import { ArrowRight, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Navbar = ({ session }: { session: any }) => {
+const Navbar = () => {
   const sidebar = useToggle();
 
   return (
@@ -21,7 +21,7 @@ const Navbar = ({ session }: { session: any }) => {
               alt="logo"
               height={35}
               width={35}
-              className="rounded-full object-cover shadow"
+              className="rounded-full object-cover"
             />
           </Link>
           <div
