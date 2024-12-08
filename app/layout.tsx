@@ -70,7 +70,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn("antialiased", workSans.variable)}>
         <Toaster closeButton richColors position="top-left" />
-        <ServerNavbar />
         {children}
       </body>
     </html>

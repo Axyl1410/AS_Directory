@@ -1,6 +1,6 @@
 "use client";
 
-import Sidebar from "@/components/sidebar";
+import Sidebar from "@/components/ui/sidebar";
 import useToggle from "@/hooks/use-state-toggle";
 import { Menu } from "lucide-react";
 import Image from "next/image";
@@ -11,7 +11,7 @@ const Navbar = ({ session }: { session: any }) => {
 
   return (
     <>
-      <div className="fixed z-50 h-[66px] w-full border-b bg-primary px-5 py-4">
+      <div className="bg-primary fixed z-50 h-[66px] w-full border-b px-5 py-4">
         <div className="container flex w-full justify-between">
           <Link href="/">
             <Image
