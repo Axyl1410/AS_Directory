@@ -1,5 +1,5 @@
 import { formatDate } from "@/lib/utils";
-import SkeletonImage from "./SkeletonImage";
+import SkeletonImage from "./skeleton-image";
 
 interface Author {
   _id: number;

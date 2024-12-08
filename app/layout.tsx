@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import "easymde/dist/easymde.min.css";
 import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import localFont from "next/font/local";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "./../components/theme/theme-context";
@@ -70,7 +71,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn("antialiased", workSans.variable)}>
         <Toaster closeButton richColors position="top-left" />
-        <ThemeProvider>{children}</ThemeProvider>
+        <SessionProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );
