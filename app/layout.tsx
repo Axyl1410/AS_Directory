@@ -1,7 +1,9 @@
+import ServerNavbar from "@/layout/server-navbar";
 import { cn } from "@/lib/utils";
 import "easymde/dist/easymde.min.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const workSans = localFont({
@@ -56,7 +58,7 @@ const workSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Axyl Blog",
+  title: "Axyl's Blog",
   description: "A blog by Axyl",
   icons: "/favicon.ico",
 };
@@ -66,7 +68,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={cn("antialiased", workSans.variable)}>{children}</body>
+      <body className={cn("antialiased", workSans.variable)}>
+        <Toaster closeButton richColors position="top-left" />
+        <ServerNavbar />
+        {children}
+      </body>
     </html>
   );
 }

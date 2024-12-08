@@ -1,5 +1,3 @@
-import Navbar from "@/layout/Navbar";
-
 interface Post {
   _createdAt: Date;
   views: number;
@@ -62,7 +60,6 @@ export default async function Home({
 
   return (
     <>
-      <Navbar />
       {/* <Hero query={query} />
       <section className="px-4">
         <div className="container flex flex-col justify-center py-8 sm:py-12">

@@ -1,13 +1,17 @@
-import { auth } from "@/auth";
+"use client";
+
+import Sidebar from "@/components/sidebar";
+import useToggle from "@/hooks/use-state-toggle";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Navbar = async () => {
-  const session = await auth();
+const Navbar = ({ session }: { session: any }) => {
+  const sidebar = useToggle();
+
   return (
     <>
-      <div className="fixed z-50 h-[66px] w-full border-b px-5 py-4">
+      <div className="fixed z-50 h-[66px] w-full border-b bg-primary px-5 py-4">
         <div className="container flex w-full justify-between">
           <Link href="/">
             <Image
@@ -15,60 +19,21 @@ const Navbar = async () => {
               alt="logo"
               height={35}
               width={35}
-              className="rounded-full object-cover shadow-sm"
+              className="rounded-full object-cover shadow"
             />
           </Link>
-          <div className="flex h-[35px] w-10 cursor-pointer items-center justify-center rounded-lg border border-[#ededed] bg-[#ededed] transition-colors hover:border-sky-500 hover:shadow">
+          <div
+            className="flex h-[35px] w-10 cursor-pointer items-center justify-center rounded-lg border border-[#ededed] bg-[#ededed] shadow transition-colors hover:border-sky-500"
+            onClick={sidebar.toggle}
+          >
             <Menu size={18} />
           </div>
         </div>
       </div>
+      <Sidebar isOpen={sidebar.isOpen} onClose={sidebar.close}>
+        <div>a</div>
+      </Sidebar>
     </>
-    // <div className="w-full bg-white px-4">
-    //   <div className="container flex h-[80px] items-center justify-between">
-    //     <Link href="/">
-    //       <Image src="/logo.png" alt="Logo" width={144} height={30} />
-    //     </Link>
-    //     <div className="flex items-center font-semibold text-black">
-    //       {session && session.user ? (
-    //         <div className="flex items-center gap-4">
-    //           <p className="hidden xs:block">{session.user.name}</p>
-    //           <form
-    //             action={async () => {
-    //               "use server";
-    //               await signOut({ redirectTo: "/" });
-    //             }}
-    //           >
-    //             <button className="text-primary" type="submit">
-    //               <p className="hidden xs:block">Sign Out</p>
-    //               <div className="xs:hidden">
-    //                 <LogOut size={20} />
-    //               </div>
-    //             </button>
-    //           </form>
-    //           <Link href={`/user/${session.user.name}`}>
-    //             <Image
-    //               src={session.user.image || "/default-profile.jpg"}
-    //               alt="Profile"
-    //               width={36}
-    //               height={36}
-    //               className="rounded-full"
-    //             />
-    //           </Link>
-    //         </div>
-    //       ) : (
-    //         <form
-    //           action={async () => {
-    //             "use server";
-    //             await signIn("github");
-    //           }}
-    //         >
-    //           <button type="submit">Sign In</button>
-    //         </form>
-    //       )}
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
