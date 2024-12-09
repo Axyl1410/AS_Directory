@@ -18,34 +18,39 @@ export default {
         xs: "475px",
       },
       colors: {
-        primary: {
-          "100": "#FFE8F0",
+        background: {
           DEFAULT: "#f4f4f4",
+          dark: "#15171b",
         },
-        secondary: "#FBE843",
-        black: {
-          "100": "#333333",
-          "200": "#141413",
-          "300": "#7D8087",
-          DEFAULT: "#000000",
+        text: {
+          DEFAULT: "#070b28",
+          dark: "#ededed",
         },
-        white: {
-          "100": "#F7F7F7",
-          DEFAULT: "#FFFFFF",
+        nav: {
+          DEFAULT: "#ededed",
+          dark: "#1a2230",
+        },
+        border: {
+          DEFAULT: "#e8e8e8",
+          dark: "#29282e",
+        },
+        link: {
+          DEFAULT: "#4479e2",
+        },
+        linkShade: {
+          DEFAULT: "#4654a5",
+        },
+        bluebg: {
+          DEFAULT: "#ededed",
+          dark: "#1a2230",
+        },
+        textSecondary: {
+          DEFAULT: "#4f576c",
+          dark: "#98a1b6",
         },
       },
       fontFamily: {
         "work-sans": ["var(--font-work-sans)"],
-      },
-      // borderRadius: {
-      //   lg: "var(--radius)",
-      //   md: "calc(var(--radius) - 2px)",
-      //   sm: "calc(var(--radius) - 4px)",
-      // },
-      boxShadow: {
-        100: "2px 2px 0px 0px rgb(0, 0, 0)",
-        200: "2px 2px 0px 2px rgb(0, 0, 0)",
-        300: "2px 2px 0px 2px rgb(238, 43, 105)",
       },
     },
   },

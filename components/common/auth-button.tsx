@@ -10,7 +10,7 @@ const AuthButton = () => {
   return (
     <>
       {session && session.user ? (
-        <div className="flex w-full items-center justify-between">
+        <div className="flex w-full items-center justify-between p-2.5 pl-0">
           <Link href="/profile">
             <div className="flex items-center gap-2.5">
               <Image
@@ -29,7 +29,7 @@ const AuthButton = () => {
         </div>
       ) : (
         <Link href="/api/auth/signin">
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 p-2.5 pl-0">
             <UserIcon size={22} />
             <p>Sign in</p>
           </div>

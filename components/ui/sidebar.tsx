@@ -30,7 +30,7 @@ const Sidebar: React.FC<sidebarProps> = ({ isOpen, onClose, children }) => {
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-title"
-          className="fixed inset-0 z-40 bg-black/80 backdrop-blur-md"
+          className="fixed inset-0 z-40 bg-black/80 px-5 backdrop-blur-md"
         >
           <div
             className="container mt-[80px] flex h-full w-full justify-end"
@@ -41,7 +41,7 @@ const Sidebar: React.FC<sidebarProps> = ({ isOpen, onClose, children }) => {
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
               transition={{ duration: 0.3, type: "spring" }}
-              className="relative flex h-fit w-[250px] items-center justify-center rounded border bg-primary shadow-lg"
+              className="relative flex h-fit w-[250px] items-center justify-center rounded border bg-background shadow-lg dark:bg-background-dark"
             >
               {children}
             </motion.div>

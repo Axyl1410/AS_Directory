@@ -12,7 +12,7 @@ const ThemeSwitcher = () => {
           toggleTheme();
         }, 300);
       }}
-      className="flex w-full items-center gap-2.5"
+      className="flex w-full items-center gap-2.5 p-2.5 pl-0"
     >
       <span>
         {theme === "light" ? (

@@ -69,7 +69,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={cn("antialiased", workSans.variable)}>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-work-sans text-text antialiased transition-colors duration-300 ease-out dark:bg-background-dark dark:text-text-dark",
+          workSans.variable,
+        )}
+      >
         <Toaster closeButton richColors position="top-left" />
         <SessionProvider>
           <ThemeProvider>{children}</ThemeProvider>
