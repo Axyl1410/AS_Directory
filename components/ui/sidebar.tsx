@@ -41,7 +41,7 @@ const Sidebar: React.FC<sidebarProps> = ({ isOpen, onClose, children }) => {
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
               transition={{ duration: 0.3, type: "spring" }}
-              className="relative flex h-fit w-[250px] items-center justify-center rounded border bg-background shadow-lg dark:bg-background-dark"
+              className="relative flex h-fit w-[250px] items-center justify-center rounded bg-background shadow-lg dark:bg-background-dark"
             >
               {children}
             </motion.div>

@@ -26,10 +26,10 @@ const Navbar = () => {
             />
           </Link>
           <div
-            className="group relative flex h-[35px] w-10 cursor-pointer items-center justify-center rounded-lg border border-nav bg-nav transition-colors hover:border-sky-500 dark:border-nav-dark dark:bg-nav-dark dark:hover:border-sky-500"
+            className="group relative flex h-[35px] w-10 cursor-pointer items-center justify-center rounded-lg border border-nav bg-nav transition-colors ease-out hover:border-sky-500 dark:border-nav-dark dark:bg-nav-dark dark:hover:border-sky-500"
             onClick={sidebar.toggle}
           >
-            <span className="absolute inset-0 -z-10 h-full w-full rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 filter transition-all duration-200 ease-out group-hover:blur-[8px]" />
+            <span className="absolute inset-0 -z-10 h-full w-full rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 filter transition-all duration-300 ease-out group-hover:blur-[8px]" />
             <span className="relative">
               <Menu size={18} />
             </span>
@@ -61,7 +61,7 @@ const Navbar = () => {
                     href="/"
                     className="w-full p-2.5 pl-0 transition-all ease-out hover:pl-2"
                   >
-                    <div className="flex items-center gap-2.5 text-[#4479e2]">
+                    <div className="flex items-center gap-2.5 text-link">
                       <ArrowRight size={22} strokeWidth={1} />
                       <p>Home</p>
                     </div>
@@ -82,7 +82,7 @@ const Navbar = () => {
             },
           ].map((section, index) => (
             <div key={index} className="flex flex-col">
-              <p className="bg-bluebg dark:bg-bluebg-dark text-textSecondary dark:text-textSecondary-dark p-2.5 pl-6 text-sm">
+              <p className="bg-bluebg p-2.5 pl-6 text-sm text-textSecondary dark:bg-bluebg-dark dark:text-textSecondary-dark">
                 {section.title}
               </p>
               {section.content}

@@ -19,6 +19,7 @@ const AuthButton = () => {
                 height={24}
                 width={24}
                 className="rounded-full object-cover"
+                priority
               />
               <p>{session.user.name}</p>
             </div>
@@ -28,7 +29,7 @@ const AuthButton = () => {
           </Link>
         </div>
       ) : (
-        <Link href="/api/auth/signin">
+        <Link href="/api/auth/signin" className="w-full">
           <div className="flex items-center gap-2.5 p-2.5 pl-0">
             <UserIcon size={22} />
             <p>Sign in</p>
