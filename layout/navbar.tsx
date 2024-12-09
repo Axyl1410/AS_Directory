@@ -22,6 +22,7 @@ const Navbar = () => {
               height={35}
               width={35}
               className="rounded-full object-cover"
+              priority
             />
           </Link>
           <div

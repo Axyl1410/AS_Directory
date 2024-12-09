@@ -18,10 +18,15 @@ const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(() => {
-    const storedTheme = localStorage.getItem("theme") as Theme;
-    return storedTheme || "light";
+    if (typeof window !== "undefined") {
+      const storedTheme = localStorage.getItem("theme") as Theme;
+      return storedTheme || "light";
+    }
+    return "light";
   });
-
+  if (typeof window !== "undefined") {
+    localStorage.setItem("theme", theme);
+  }
   useEffect(() => {
     localStorage.setItem("theme", theme);
   }, [theme]);
