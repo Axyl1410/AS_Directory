@@ -38,7 +38,7 @@ export default {
           DEFAULT: "#4479e2",
         },
         linkShade: {
-          DEFAULT: "#4654a5",
+          DEFAULT: "#ebeff8",
         },
         bluebg: {
           DEFAULT: "#ededed",

@@ -9,6 +9,7 @@
 //   title: string;
 // }
 
+import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
@@ -70,23 +71,25 @@ export default async function Home() {
               Getting Started
             </summary>
             <Link href="/">
-              <p className="mt-2 w-fit rounded-md bg-nav-dark p-2.5 text-sm text-link">
+              <p className="mt-2 w-fit rounded-md bg-linkShade p-2.5 text-sm text-link dark:bg-nav-dark">
                 Introduction
               </p>
             </Link>
           </details>
         </div>
         <div className="text-[24px] font-medium text-text dark:text-text-dark lg:text-[46px]">
-          <p className="">
+          <p>
             Welcome to my Directory
             <span className="inline-block">
-              <img
+              <Image
                 alt=""
                 src="https://avatars.githubusercontent.com/axyl1410"
+                width={30}
+                height={30}
                 className="mx-2.5 h-[20px] w-[20px] rounded-full md:h-[30px] md:w-[30px]"
               />
             </span>
-            I'm Alex and here I document our latest explorations.
+            I&apos;m Alex and here I document our latest explorations.
           </p>
         </div>
       </div>
