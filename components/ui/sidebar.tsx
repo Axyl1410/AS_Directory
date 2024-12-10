@@ -37,10 +37,10 @@ const Sidebar: React.FC<sidebarProps> = ({ isOpen, onClose, children }) => {
             onClick={handleBackdropClick}
           >
             <motion.div
-              initial={{ scale: 0.5 }}
+              initial={{ scale: 0.7 }}
               animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
-              transition={{ duration: 0.3, type: "spring" }}
+              exit={{ scale: 0.9 }}
+              transition={{ duration: 0.5, type: "spring", ease: "easeOut" }}
               className="relative flex h-fit w-[250px] items-center justify-center rounded bg-background shadow-lg dark:bg-background-dark"
             >
               {children}

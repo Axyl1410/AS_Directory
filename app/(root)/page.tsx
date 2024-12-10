@@ -9,6 +9,8 @@
 //   title: string;
 // }
 
+import Link from "next/link";
+
 export default async function Home() {
   // {
   // searchParams,
@@ -60,26 +62,34 @@ export default async function Home() {
   // ];
 
   return (
-    <>
-      {/* <Hero query={query} />
-      <section className="px-4">
-        <div className="container flex flex-col justify-center py-8 sm:py-12">
-          <div className="pb-8 text-[24px] font-semibold sm:pb-12 sm:text-[30px]">
-            {query ? (
-              <h1>Search results for {query}</h1>
-            ) : (
-              <h1>Latest Blogs</h1>
-            )}
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {posts?.length > 0 ? (
-              posts.map((post: Post) => <Card key={post._id} {...post} />)
-            ) : (
-              <p>No posts found</p>
-            )}
-          </div>
+    <div className="px-5">
+      <div className="container my-10 flex w-full grid-cols-[300px,1fr] flex-col-reverse gap-5 lg:grid">
+        <div className="top-6 z-10 flex h-full min-h-screen w-[300px] flex-col gap-4 lg:static">
+          <details open>
+            <summary className="cursor-pointer font-semibold">
+              Getting Started
+            </summary>
+            <Link href="/">
+              <p className="mt-2 w-fit rounded-md bg-nav-dark p-2.5 text-sm text-link">
+                Introduction
+              </p>
+            </Link>
+          </details>
         </div>
-      </section> */}
-    </>
+        <div className="text-[24px] font-medium text-text dark:text-text-dark lg:text-[46px]">
+          <p className="">
+            Welcome to my Directory
+            <span className="inline-block">
+              <img
+                alt=""
+                src="https://avatars.githubusercontent.com/axyl1410"
+                className="mx-2.5 h-[20px] w-[20px] rounded-full md:h-[30px] md:w-[30px]"
+              />
+            </span>
+            I'm Alex and here I document our latest explorations.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }

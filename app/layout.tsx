@@ -59,8 +59,8 @@ const workSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Axyl's Blog",
-  description: "A blog by Axyl",
+  title: "Axyl's Directory",
+  description: "A Directory by Axyl",
   icons: "/favicon.ico",
 };
 
