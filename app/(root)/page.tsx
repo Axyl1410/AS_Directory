@@ -1,26 +1,11 @@
 import Card from "@/components/ui/card";
 import { LinkPreview } from "@/components/ui/link-preview";
+import { BlogProps } from "@/constant/blog";
 import { client } from "@/sanity/lib/client";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-interface Author {
-  _id: number;
-  name: string;
-}
-
-interface BlogProps {
-  _id: string;
-  _createdAt: string;
-  views: number;
-  author: Author;
-  description: string;
-  image: string;
-  category: string;
-  title: string;
-  pitch: string;
-}
+import { Suspense } from "react";
 
 const BLOGS_QUERY = `*[
   _type == "blog"
@@ -71,11 +56,13 @@ export default async function Home() {
               </p>
               <p className="text-link hover:underline">See all</p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {blogs.map((blog, _id) => (
-                <Card key={_id} {...blog} />
-              ))}
-            </div>
+            <Suspense fallback={<div>Loading...</div>}>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {blogs.map((blog, _id) => (
+                  <Card key={_id} {...blog} />
+                ))}
+              </div>
+            </Suspense>
           </div>
         </div>
       </div>

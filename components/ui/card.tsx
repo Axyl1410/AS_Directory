@@ -1,23 +1,8 @@
+import { BlogProps } from "@/constant/blog";
 import { formatDate } from "@/lib/utils";
 import { Eye } from "lucide-react";
+import Link from "next/link";
 import SkeletonImage from "./skeleton-image";
-
-interface Author {
-  _id: number;
-  name: string;
-}
-
-interface CardProps {
-  _id: string;
-  _createdAt: string;
-  views: number;
-  author: Author;
-  description: string;
-  image: string;
-  category: string;
-  title: string;
-  pitch: string;
-}
 
 const Card = ({
   _id,
@@ -29,10 +14,12 @@ const Card = ({
   category,
   title,
   pitch,
+  slug,
   ...props
-}: CardProps & Record<string, unknown>) => {
+}: BlogProps & Record<string, unknown>) => {
   return (
-    <div
+    <Link
+      href={`/blog/${slug.current.toString()}`}
       key={_id}
       className="flex flex-col gap-4 rounded-3xl border-2 border-b-4 border-r-4 border-black bg-background p-4 font-work-sans text-text transition-colors dark:border-white dark:bg-background-dark dark:text-text-dark"
       {...props}
@@ -77,7 +64,7 @@ const Card = ({
         </button>
       </div>
       <div className="sr-only">{pitch}</div>
-    </div>
+    </Link>
   );
 };
 

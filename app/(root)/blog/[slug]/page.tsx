@@ -1,23 +1,7 @@
+import { BlogProps } from "@/constant/blog";
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import { Suspense } from "react";
-
-interface Author {
-  _id: number;
-  name: string;
-}
-
-interface Blog {
-  _id: string;
-  _createdAt: string;
-  title: string;
-  description: string;
-  image: string;
-  author: Author;
-  view: number;
-  category: string;
-  pitch: string;
-}
 
 const BLOG_QUERY = `*[_type == "blog" && slug.current == $slug][0]`;
 
@@ -29,7 +13,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const blog = await client.fetch<Blog>(BLOG_QUERY, { slug }, options);
+  const blog = await client.fetch<BlogProps>(BLOG_QUERY, { slug }, options);
 
   if (!blog) {
     return <div>Blog not found</div>;
