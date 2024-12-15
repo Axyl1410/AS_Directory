@@ -30,9 +30,10 @@ const Card = ({
   title,
   pitch,
   ...props
-}: CardProps & { [key: string]: any }) => {
+}: CardProps & Record<string, unknown>) => {
   return (
     <div
+      key={_id}
       className="flex flex-col gap-4 rounded-3xl border-2 border-b-4 border-r-4 border-black bg-background p-4 font-work-sans text-text transition-colors dark:border-white dark:bg-background-dark dark:text-text-dark"
       {...props}
     >
@@ -75,6 +76,7 @@ const Card = ({
           Details
         </button>
       </div>
+      <div className="sr-only">{pitch}</div>
     </div>
   );
 };
