@@ -2,80 +2,35 @@ import Card from "@/components/ui/card";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { client } from "@/sanity/lib/client";
 import { ArrowUpRight } from "lucide-react";
-import { SanityDocument } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 
-interface Post {
-  _createdAt: Date;
-  views: number;
-  author: { _id: number; name: string };
+interface Author {
   _id: number;
+  name: string;
+}
+
+interface BlogProps {
+  _id: string;
+  _createdAt: string;
+  views: number;
+  author: Author;
   description: string;
   image: string;
   category: string;
   title: string;
+  pitch: string;
 }
 
 const BLOGS_QUERY = `*[
   _type == "blog"
   && defined(slug.current)
-]|order(publishedAt desc)[0...6]{_id, title, slug, author, view, decription, category, image, pitch}`;
+]|order(publishedAt desc)[0...6]{title, slug, author, view, description, category, image, pitch}`;
 
 const options = { next: { revalidate: 30 } };
 
 export default async function Home() {
-  const blogs = await client.fetch<SanityDocument[]>(BLOGS_QUERY, {}, options);
-
-  // console.table(blogs);
-  // {
-  // searchParams,
-  // }: {
-  // searchParams: Promise<{ query?: string }>;
-  // },
-  // const query = (await searchParams).query;
-  const posts: Post[] = [
-    {
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: "John Doe" },
-      _id: 1,
-      description: "This is a description",
-      image: "https://nguyentruonggiang.id.vn/image/img1.jfif",
-      category: "Robots",
-      title: "We Robots",
-    },
-    {
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: "John Doe" },
-      _id: 2,
-      description: "This is a description",
-      image: "https://nguyentruonggiang.id.vn/image/img1.jfif",
-      category: "Robots",
-      title: "We Robots",
-    },
-    {
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: "John Doe" },
-      _id: 3,
-      description: "This is a description",
-      image: "https://nguyentruonggiang.id.vn/image/img1.jfif",
-      category: "Robots",
-      title: "We Robots",
-    },
-    {
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: "John Doe" },
-      _id: 4,
-      description: "This is a description",
-      image: "https://nguyentruonggiang.id.vn/image/img1.jfif",
-      category: "Robots",
-      title: "We Robots",
-    },
-  ];
+  const blogs = await client.fetch<BlogProps[]>(BLOGS_QUERY, {}, options);
 
   return (
     <div className="px-5">
@@ -117,8 +72,8 @@ export default async function Home() {
               <p className="text-link hover:underline">See all</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => (
-                <Card key={post._id} {...post} />
+              {blogs.map((blog, _id) => (
+                <Card key={_id} {...blog} />
               ))}
             </div>
           </div>

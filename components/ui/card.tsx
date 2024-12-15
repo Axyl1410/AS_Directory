@@ -8,16 +8,19 @@ interface Author {
 }
 
 interface CardProps {
-  _createdAt: Date;
+  _id: string;
+  _createdAt: string;
   views: number;
   author: Author;
   description: string;
   image: string;
   category: string;
   title: string;
+  pitch: string;
 }
 
 const Card = ({
+  _id,
   _createdAt,
   views,
   author,
@@ -25,9 +28,14 @@ const Card = ({
   image,
   category,
   title,
-}: CardProps) => {
+  pitch,
+  ...props
+}: CardProps & { [key: string]: any }) => {
   return (
-    <div className="flex flex-col gap-4 rounded-3xl border-2 border-b-4 border-r-4 border-black bg-background p-4 font-work-sans text-text transition-colors dark:border-white dark:bg-background-dark dark:text-text-dark">
+    <div
+      className="flex flex-col gap-4 rounded-3xl border-2 border-b-4 border-r-4 border-black bg-background p-4 font-work-sans text-text transition-colors dark:border-white dark:bg-background-dark dark:text-text-dark"
+      {...props}
+    >
       <div className="flex w-full items-center justify-between">
         <p className="rounded-full py-2.5 text-sm font-medium transition-colors duration-300 ease-in">
           {formatDate(_createdAt)}
