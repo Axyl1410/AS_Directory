@@ -1,21 +1,34 @@
 import Card from "@/components/ui/card";
 import { LinkPreview } from "@/components/ui/link-preview";
-import { BlogProps } from "@/constant/blog";
+import { BlogProps } from "@/constant/model";
 import { client } from "@/sanity/lib/client";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const BLOGS_QUERY = `*[
-  _type == "blog"
-  && defined(slug.current)
-]|order(publishedAt desc)[0...6]{title, slug, author, view, description, category, image, pitch}`;
+const BLOGS_QUERY = `*[_type == "blog" && defined(slug.current)] | order(publishedAt desc)[0...6] {
+  title,
+  slug,
+  view,
+  description,
+  category,
+  image,
+  pitch,
+  _createdAt,
+  author -> {
+    _id,
+    name,
+    username,
+    image
+  }
+}`;
 
 const options = { next: { revalidate: 30 } };
 
 export default async function Home() {
   const blogs = await client.fetch<BlogProps[]>(BLOGS_QUERY, {}, options);
+  console.log(blogs);
 
   return (
     <div className="px-5">
@@ -51,9 +64,7 @@ export default async function Home() {
 
           <div className="flex flex-col gap-4">
             <div className="flex w-full items-center justify-between">
-              <p className="text-xl font-medium md:text-2xl">
-                Recent Tutorials
-              </p>
+              <p className="text-xl font-medium md:text-2xl">Recent Posts</p>
               <p className="text-link hover:underline">See all</p>
             </div>
             <Suspense fallback={<div>Loading...</div>}>
