@@ -1,6 +1,7 @@
 import { Author } from "@/constant/model";
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
+import { Suspense } from "react";
 
 const AUTHOR_QUERY = `*[_type == "author" && _id == $id][0]`;
 
@@ -19,7 +20,7 @@ export default async function Page({
       {!author ? (
         <div>Author not found</div>
       ) : (
-        <div>
+        <Suspense fallback={<div>Loading...</div>}>
           <p>{author.username}</p>
           <p>{author.name}</p>
           <p>{author._id}</p>
@@ -29,7 +30,7 @@ export default async function Page({
             height={200}
             width={200}
           />
-        </div>
+        </Suspense>
       )}
     </>
   );

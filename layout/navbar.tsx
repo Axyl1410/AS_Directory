@@ -53,20 +53,50 @@ const Navbar = () => {
             {
               title: "Navigation",
               content: (
-                <div
-                  className="flex items-center pl-6 transition-colors hover:bg-border dark:hover:bg-border-dark"
-                  onClick={sidebar.close}
-                >
-                  <Link
-                    href="/"
-                    className="w-full p-2.5 pl-0 transition-all ease-out hover:pl-2"
+                <>
+                  <div
+                    className="flex items-center pl-6 transition-colors hover:bg-border dark:hover:bg-border-dark"
+                    onClick={sidebar.close}
                   >
-                    <div className="flex items-center gap-2.5 text-link">
-                      <ArrowRight size={22} strokeWidth={1} />
-                      <p>Home</p>
-                    </div>
-                  </Link>
-                </div>
+                    <Link
+                      href="/"
+                      className="w-full p-2.5 pl-0 transition-all ease-out hover:pl-2"
+                    >
+                      <div className="flex items-center gap-2.5 text-link">
+                        <ArrowRight size={22} strokeWidth={1} />
+                        <p>Home</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div
+                    className="flex items-center pl-6 transition-colors hover:bg-border dark:hover:bg-border-dark"
+                    onClick={sidebar.close}
+                  >
+                    <Link
+                      href="/blog"
+                      className="w-full p-2.5 pl-0 transition-all ease-out hover:pl-2"
+                    >
+                      <div className="flex items-center gap-2.5 text-link">
+                        <ArrowRight size={22} strokeWidth={1} />
+                        <p>Blog</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div
+                    className="flex items-center pl-6 transition-colors hover:bg-border dark:hover:bg-border-dark"
+                    onClick={sidebar.close}
+                  >
+                    <Link
+                      href="/user"
+                      className="w-full p-2.5 pl-0 transition-all ease-out hover:pl-2"
+                    >
+                      <div className="flex items-center gap-2.5 text-link">
+                        <ArrowRight size={22} strokeWidth={1} />
+                        <p>User</p>
+                      </div>
+                    </Link>
+                  </div>
+                </>
               ),
             },
             {

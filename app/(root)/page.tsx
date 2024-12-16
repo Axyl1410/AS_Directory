@@ -50,10 +50,12 @@ export default async function Home() {
           </p>
 
           <div className="mb-[100px] mt-8 flex gap-2 text-sm">
-            <div className="flex w-fit items-center gap-1 rounded-md bg-linkShade p-2 text-sm text-link dark:bg-nav-dark">
-              <p>Gallery</p>
-              <ArrowUpRight size={16} />
-            </div>
+            <Link href="/blog">
+              <div className="flex w-fit items-center gap-1 rounded-md bg-linkShade p-2 text-sm text-link dark:bg-nav-dark">
+                <p>Gallery</p>
+                <ArrowUpRight size={16} />
+              </div>
+            </Link>
             <LinkPreview url="https://nguyentruonggiang.id.vn">
               <div className="flex w-fit items-center rounded-md bg-linkShade p-2 text-sm text-link dark:bg-nav-dark">
                 <p>About me</p>
@@ -65,7 +67,9 @@ export default async function Home() {
           <div className="flex flex-col gap-4">
             <div className="flex w-full items-center justify-between">
               <p className="text-xl font-medium md:text-2xl">Recent Posts</p>
-              <p className="text-link hover:underline">See all</p>
+              <Link href="/blog">
+                <p className="text-link hover:underline">See all</p>
+              </Link>
             </div>
             <Suspense fallback={<div>Loading...</div>}>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
