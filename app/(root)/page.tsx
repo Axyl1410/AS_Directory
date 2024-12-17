@@ -1,6 +1,7 @@
 import Card from "@/components/ui/card";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { BlogProps } from "@/constant/model";
+import Sidebar from "@/layout/sidebar";
 import { client } from "@/sanity/lib/client";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
@@ -83,35 +84,4 @@ export default async function Home() {
       </div>
     </div>
   );
-
-  function Sidebar() {
-    return (
-      <div className="top-[106px] z-10 flex h-[calc(100vh-106px)] w-[300px] flex-col gap-4 lg:sticky">
-        {[
-          {
-            title: "Getting Started",
-            children: [
-              {
-                title: "Introduction",
-                link: "/",
-              },
-            ],
-          },
-        ].map((section) => (
-          <details key={section.title} open>
-            <summary className="cursor-pointer font-semibold">
-              {section.title}
-            </summary>
-            {section.children.map((child) => (
-              <Link key={child.link} href={child.link}>
-                <p className="mt-2 w-fit rounded-md bg-linkShade p-2 text-sm text-link dark:bg-nav-dark">
-                  {child.title}
-                </p>
-              </Link>
-            ))}
-          </details>
-        ))}
-      </div>
-    );
-  }
 }

@@ -1,3 +1,4 @@
+import ScrollToTop from "@/components/common/scroll-to-top";
 import { cn } from "@/lib/utils";
 import "easymde/dist/easymde.min.css";
 import type { Metadata } from "next";
@@ -81,7 +82,10 @@ export default function RootLayout({
       >
         <Toaster closeButton richColors position="top-left" />
         <SessionProvider>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <ScrollToTop />
+            {children}
+          </ThemeProvider>
         </SessionProvider>
       </body>
     </html>
