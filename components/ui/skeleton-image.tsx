@@ -54,7 +54,7 @@ export default function SkeletonImage({
         <Image
           alt=""
           onLoad={imageLoaded}
-          src={src}
+          src={src.trimStart()}
           fill
           className={cn("static block object-cover", className)}
         />

@@ -1,4 +1,4 @@
-import { BlogProps } from "@/constant/blog";
+import { BlogProps } from "@/constant/model";
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import { Suspense } from "react";
@@ -15,17 +15,46 @@ export default async function Page({
   const { slug } = await params;
   const blog = await client.fetch<BlogProps>(BLOG_QUERY, { slug }, options);
 
-  if (!blog) {
-    return <div>Blog not found</div>;
-  }
-
-  const imageUrl = blog.image.trimStart();
-
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <h1>{blog.title}</h1>
-      <p>{blog.description}</p>
-      <Image height={200} width={200} alt="" src={imageUrl} />
-    </Suspense>
+    <>
+      <div className="px-5">
+        <div className="container my-10 flex w-full justify-center">
+          <div className="lg:w-4/5">
+            {!blog ? (
+              <div>Blog not found</div>
+            ) : (
+              <Suspense fallback={<div>Loading...</div>}>
+                <div className="flex flex-col gap-4">
+                  <div className="flex w-full justify-center">
+                    <div className="flex w-full items-center justify-between">
+                      <p className="text-xl font-medium md:text-2xl">
+                        {blog.title}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-4">
+                    <div className="flex w-full justify-center">
+                      <div className="flex flex-col gap-2">
+                        <p className="text-balance">{blog.description}</p>
+                      </div>
+                    </div>
+                    <div className="flex w-full justify-center">
+                      <div className="flex w-full gap-4">
+                        <Image
+                          alt=""
+                          fill
+                          src={blog.image.trimStart()}
+                          className="static aspect-video rounded-sm"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Suspense>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

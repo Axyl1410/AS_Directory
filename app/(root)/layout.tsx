@@ -1,14 +1,27 @@
+"use client";
 import Navbar from "@/layout/navbar";
-
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
   return (
     <>
       <Navbar />
-      <div className="pt-[66px]">{children}</div>
+      <div className="pt-[66px]">
+        <motion.div
+          key={pathname}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          {children}
+        </motion.div>
+      </div>
     </>
   );
 }

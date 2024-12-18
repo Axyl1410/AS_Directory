@@ -1,12 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-export default function BackButton({
-  children,
-  ...props
-}: {
+
+interface BackButtonProps {
   children: React.ReactNode;
-}) {
+  [key: string]: unknown;
+}
+
+export default function BackButton({ children, ...props }: BackButtonProps) {
   const router = useRouter();
   return (
     <button onClick={() => router.back()} {...props}>
