@@ -6,7 +6,7 @@ import { SessionProvider } from "next-auth/react";
 import localFont from "next/font/local";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "./../components/theme/theme-context";
-import "./globals.css";
+import "./globals.scss";
 
 const workSans = localFont({
   src: [
@@ -76,7 +76,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-work-sans text-text antialiased transition-colors duration-300 ease-out dark:bg-background-dark dark:text-text-dark",
+          "min-h-screen w-screen overflow-x-hidden bg-background font-work-sans text-text antialiased transition-colors duration-300 ease-out dark:bg-background-dark dark:text-text-dark",
           workSans.variable,
         )}
       >

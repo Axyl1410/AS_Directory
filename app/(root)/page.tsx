@@ -45,6 +45,7 @@ export default async function Home() {
                 width={30}
                 height={30}
                 className="mx-2.5 h-[20px] w-[20px] rounded-full md:h-[30px] md:w-[30px]"
+                priority
               />
             </span>
             I&apos;m Alex and here I document our latest explorations.

@@ -1,9 +1,27 @@
 import { BlogProps } from "@/constant/model";
+import { formatDate } from "@/lib/utils";
 import { client } from "@/sanity/lib/client";
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { Suspense } from "react";
 
-const BLOG_QUERY = `*[_type == "blog" && slug.current == $slug][0]`;
+const BLOG_QUERY = `*[_type == "blog" && slug.current == $slug][0]{
+  title,
+  slug,
+  view,
+  description,
+  category,
+  image,
+  pitch,
+  _createdAt,
+  author -> {
+    _id,
+    name,
+    username,
+    image
+  }
+}`;
 
 const options = { next: { revalidate: 30 } };
 
@@ -25,6 +43,28 @@ export default async function Page({
             ) : (
               <Suspense fallback={<div>Loading...</div>}>
                 <div className="flex flex-col gap-4">
+                  <Link className="flex items-center hover:underline" href="/">
+                    <ArrowLeft size={16} />
+                    <p>Back</p>
+                  </Link>
+                  <div className="flex items-center gap-4">
+                    <Image
+                      src={blog.author.image}
+                      alt={blog.author.username}
+                      height={40}
+                      width={40}
+                      priority
+                      className="aspect-square rounded-full"
+                    />
+                    <div className="flex flex-col gap-1">
+                      <p className="text-sm font-medium">
+                        {blog.author.name + blog.author.username}
+                      </p>
+                      <p className="text-xs text-neutral-500">
+                        {formatDate(blog._createdAt)}
+                      </p>
+                    </div>
+                  </div>
                   <div className="flex w-full justify-center">
                     <div className="flex w-full items-center justify-between">
                       <p className="text-xl font-medium md:text-2xl">

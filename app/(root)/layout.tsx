@@ -1,7 +1,9 @@
 "use client";
+import Footer from "@/layout/footer";
 import Navbar from "@/layout/navbar";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+
 export default function DashboardLayout({
   children,
 }: {
@@ -22,6 +24,7 @@ export default function DashboardLayout({
           {children}
         </motion.div>
       </div>
+      <Footer />
     </>
   );
 }
