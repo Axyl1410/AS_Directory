@@ -30,17 +30,17 @@ export default async function Page() {
   return (
     <div className="px-5">
       <div className="container my-10 w-full">
-        {blogs.length === 0 ? (
-          <div>No blog found</div>
-        ) : (
-          <div className="flex flex-col gap-4">
-            <div className="flex w-full items-center justify-between">
-              <p className="text-xl font-medium md:text-2xl">Recent Posts</p>
-              <Link className="flex items-center hover:underline" href="/">
-                <ArrowLeft size={16} />
-                <p>Back</p>
-              </Link>
-            </div>
+        <div className="flex flex-col gap-4">
+          <div className="flex w-full items-center justify-between">
+            <p className="text-xl font-medium md:text-2xl">Recent Posts</p>
+            <Link className="flex items-center hover:underline" href="/">
+              <ArrowLeft size={16} />
+              <p>Back</p>
+            </Link>
+          </div>
+          {blogs.length === 0 ? (
+            <div>No blog found</div>
+          ) : (
             <Suspense fallback={<div>Loading...</div>}>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {blogs.map((blog, _id) => (
@@ -48,8 +48,8 @@ export default async function Page() {
                 ))}
               </div>
             </Suspense>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
