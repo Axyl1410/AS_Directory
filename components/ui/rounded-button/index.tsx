@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Magnetic from "../magnetic";
 import styles from "./style.module.scss";
 
-export default function index({
+export default function Index({
   children,
   backgroundColor = "#455CE9",
   ...attributes

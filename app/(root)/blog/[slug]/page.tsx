@@ -65,29 +65,20 @@ export default async function Page({
                       </p>
                     </div>
                   </div>
-                  <div className="flex w-full justify-center">
-                    <div className="flex w-full items-center justify-between">
-                      <p className="text-xl font-medium md:text-2xl">
-                        {blog.title}
-                      </p>
-                    </div>
-                  </div>
+                  <p className="text-xl font-medium md:text-2xl">
+                    {blog.title}
+                  </p>
                   <div className="flex flex-col gap-4">
-                    <div className="flex w-full justify-center">
-                      <div className="flex flex-col gap-2">
-                        <p className="text-balance">{blog.description}</p>
-                      </div>
+                    <p className="text-balance">{blog.description}</p>
+                    <div className="flex w-full gap-4">
+                      <Image
+                        alt=""
+                        fill
+                        src={blog.image.trimStart()}
+                        className="static aspect-video rounded-sm"
+                      />
                     </div>
-                    <div className="flex w-full justify-center">
-                      <div className="flex w-full gap-4">
-                        <Image
-                          alt=""
-                          fill
-                          src={blog.image.trimStart()}
-                          className="static aspect-video rounded-sm"
-                        />
-                      </div>
-                    </div>
+                    <p className="text-balance">{blog.pitch}</p>
                   </div>
                 </div>
               </Suspense>

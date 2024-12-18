@@ -63,7 +63,7 @@ export default function index() {
       <motion.div ref={container} className={styles.contact}>
         <div className={cn("container min-h-screen", styles.body)}>
           <div className={styles.title}>
-            <span>
+            <div>
               <div className={styles.imageContainer}>
                 <img
                   alt={"image"}
@@ -71,7 +71,7 @@ export default function index() {
                 />
               </div>
               <h2>Let's work</h2>
-            </span>
+            </div>
             <h2>together!</h2>
             <motion.div style={{ x }} className={styles.buttonContainer}>
               <a
@@ -108,18 +108,18 @@ export default function index() {
           </div> */}
           <div className={styles.info}>
             <div>
-              <span>
+              <div>
                 <h3>Version</h3>
                 <p>2024 © Edition</p>
-              </span>
-              <span>
+              </div>
+              <div>
                 <h3>Vietnam</h3>
                 <p>{getVietnamTime()}</p>
-              </span>
+              </div>
             </div>
             <div className="flex w-full justify-between md:block md:w-auto">
               <div>
-                <span>
+                <div>
                   <h3>Socials</h3>
                   <a
                     href="https://github.com/axyl1410"
@@ -130,10 +130,10 @@ export default function index() {
                       <p>Github</p>
                     </Magnetic>
                   </a>
-                </span>
+                </div>
               </div>
               <div>
-                <span>
+                <div>
                   <h3>About</h3>
                   <a
                     className="w-fit"
@@ -145,7 +145,7 @@ export default function index() {
                       <p>Axyl</p>
                     </Magnetic>
                   </a>
-                </span>
+                </div>
               </div>
             </div>
           </div>

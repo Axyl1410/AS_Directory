@@ -31,7 +31,7 @@ export default function Magnetic({
           yTo(y * 0.35);
         }
       });
-      magnetic.current.addEventListener("mouseleave", (e) => {
+      magnetic.current.addEventListener("mouseleave", () => {
         xTo(0);
         yTo(0);
       });
