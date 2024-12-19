@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const BLOGS_QUERY = `*[_type == "blog" && defined(slug.current)] | order(publishedAt desc)[0...6] {
+const BLOGS_QUERY = `*[_type == "blog" && defined(slug.current)] | order(publishedAt desc)[0...12] {
   title,
   slug,
   view,

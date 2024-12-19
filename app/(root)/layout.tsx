@@ -14,7 +14,7 @@ export default function DashboardLayout({
   return (
     <>
       <Navbar />
-      <div className="pt-[66px]">
+      <div className="mb-[60px] pt-[66px]">
         <motion.div
           key={pathname}
           initial={{ opacity: 0 }}

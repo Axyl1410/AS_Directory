@@ -14,7 +14,7 @@ export default function Index({
   [key: string]: unknown;
 }) {
   const circle = useRef(null);
-  let timeline = useRef<gsap.core.Timeline | null>(null);
+  const timeline = useRef<gsap.core.Timeline | null>(null);
   let timeoutId = null as NodeJS.Timeout | null;
   useEffect(() => {
     timeline.current = gsap.timeline({ paused: true });
