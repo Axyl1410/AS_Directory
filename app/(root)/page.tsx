@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const BLOGS_QUERY = `*[_type == "blog" && defined(slug.current)] | order(publishedAt desc)[0...6] {
+const BLOGS_QUERY = `*[_type == "blog" && defined(slug.current)] | order(publishedAt desc)[0...12] {
   title,
   slug,
   view,
@@ -45,6 +45,7 @@ export default async function Home() {
                 width={30}
                 height={30}
                 className="mx-2.5 h-[20px] w-[20px] rounded-full md:h-[30px] md:w-[30px]"
+                priority
               />
             </span>
             I&apos;m Alex and here I document our latest explorations.
