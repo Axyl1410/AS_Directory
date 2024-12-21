@@ -140,20 +140,6 @@
   }
 }
 
-.circleContainer {
-  position: relative;
-
-  .circle {
-    height: 1550%;
-    width: 120%;
-    left: -10%;
-    border-radius: 0 0 50% 50%;
-    border-bottom: #f2f2f2 1px solid;
-    z-index: 1;
-    position: absolute;
-  }
-}
-
 @media (max-width: 768px) {
   .contact {
     .body {

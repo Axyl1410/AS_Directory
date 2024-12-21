@@ -1,12 +1,13 @@
-import { BlogProps } from "@/constant/model";
+import { CardProps } from "@/components/ui/card";
+import SkeletonImage from "@/components/ui/skeleton-image";
 import { formatDate } from "@/lib/utils";
 import { client } from "@/sanity/lib/client";
 import { ArrowLeft } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const BLOG_QUERY = `*[_type == "blog" && slug.current == $slug][0]{
+const BLOG_QUERY = `*[_type == "blog" && _id == $id][0]{
+  _id,
   title,
   slug,
   view,
@@ -28,14 +29,14 @@ const options = { next: { revalidate: 30 } };
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ id: string }>;
 }) {
-  const { slug } = await params;
-  const blog = await client.fetch<BlogProps>(BLOG_QUERY, { slug }, options);
+  const { id } = await params;
+  const blog = await client.fetch<CardProps>(BLOG_QUERY, { id }, options);
 
   return (
     <>
-      <div className="px-5">
+      <div className="min-h-screen px-5">
         <div className="container my-10 flex w-full justify-center">
           <div className="lg:w-4/5">
             {!blog ? (
@@ -48,17 +49,15 @@ export default async function Page({
                     <p>Back</p>
                   </Link>
                   <div className="flex items-center gap-4">
-                    <Image
-                      src={blog.author.image}
-                      alt={blog.author.username}
-                      height={40}
-                      width={40}
-                      priority
+                    <SkeletonImage
+                      src={blog?.author?.image ?? ""}
+                      height="40px"
+                      width="40px"
                       className="aspect-square rounded-full"
                     />
                     <div className="flex flex-col gap-1">
                       <p className="text-sm font-medium">
-                        {blog.author.name + blog.author.username}
+                        {blog.author?.name ?? ""} {blog.author?.username ?? ""}
                       </p>
                       <p className="text-xs text-neutral-500">
                         {formatDate(blog._createdAt)}
@@ -70,12 +69,10 @@ export default async function Page({
                   </p>
                   <div className="flex flex-col gap-4">
                     <p className="text-balance">{blog.description}</p>
-                    <div className="flex w-full gap-4">
-                      <Image
-                        alt=""
-                        fill
-                        src={blog.image.trimStart()}
-                        className="static aspect-video rounded-sm"
+                    <div className="flex w-full justify-center gap-4">
+                      <SkeletonImage
+                        src={blog.image?.trimStart() ?? ""}
+                        className="rounded-sm"
                       />
                     </div>
                     <p className="text-balance">{blog.pitch}</p>

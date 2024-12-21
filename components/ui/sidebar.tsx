@@ -22,7 +22,7 @@ const Sidebar: React.FC<sidebarProps> = ({ isOpen, onClose, children }) => {
   return ReactDOM.createPortal(
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <motion.div                       
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

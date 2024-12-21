@@ -16,18 +16,6 @@ export default function index() {
   const x = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const rotate = useTransform(scrollYProgress, [0, 1], [120, 90]);
 
-  // const handleCopy = (e: any) => {
-  //   const textToCopy = e;
-  //   navigator.clipboard
-  //     .writeText(textToCopy)
-  //     .then(() => {
-  //       toast.success("Copied to clipboard");
-  //     })
-  //     .catch((err) => {
-  //       toast.error(`Failed to copy: ${err}`);
-  //     });
-  // };
-
   const getVietnamTime = () => {
     const options = {
       timeZone: "Asia/Ho_Chi_Minh",
@@ -39,27 +27,8 @@ export default function index() {
     return new Intl.DateTimeFormat("en-US", options).format(new Date());
   };
 
-  // const height = useTransform(scrollYProgress, [0, 0.7], [20, 0]);
-  // const mobileHeight = useTransform(scrollYProgress, [0, 0.7], [10, 0]);
-
   return (
     <>
-      <motion.div
-        // style={{
-        //   height:
-        //     typeof window !== "undefined" && window.innerWidth < 640
-        //       ? mobileHeight
-        //       : height,
-        // }}
-        className={`sm:block ${styles.circleContainer}`}
-      >
-        {/* <div
-          className={cn(
-            "bg-background transition-colors dark:bg-background-dark",
-            styles.circle,
-          )}
-        ></div> */}
-      </motion.div>
       <motion.div ref={container} className={styles.contact}>
         <div className={cn("container min-h-screen", styles.body)}>
           <div className={styles.title}>
@@ -98,14 +67,7 @@ export default function index() {
               />
             </motion.svg>
           </div>
-          {/* <div className={styles.nav}>
-            <Rounded onClick={() => handleCopy("Truonggiang190689@gmail.com")}>
-              <p>Truonggiang190689@gmail.com</p>
-            </Rounded>
-            <Rounded onClick={() => handleCopy("+84353067717")}>
-              <p>+84 353 06 77 17</p>
-            </Rounded>
-          </div> */}
+
           <div className={styles.info}>
             <div>
               <div>
@@ -119,33 +81,29 @@ export default function index() {
             </div>
             <div className="flex w-full justify-between md:block md:w-auto">
               <div>
-                <div>
-                  <h3>Socials</h3>
-                  <a
-                    href="https://github.com/axyl1410"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    <Magnetic>
-                      <p>Github</p>
-                    </Magnetic>
-                  </a>
-                </div>
+                <h3>Socials</h3>
+                <a
+                  href="https://github.com/axyl1410"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <Magnetic>
+                    <p>Github</p>
+                  </Magnetic>
+                </a>
               </div>
               <div>
-                <div>
-                  <h3>About</h3>
-                  <a
-                    className="w-fit"
-                    href="https://nguyentruonggiang.id.vn/"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    <Magnetic>
-                      <p>Axyl</p>
-                    </Magnetic>
-                  </a>
-                </div>
+                <h3>About</h3>
+                <a
+                  className="w-fit"
+                  href="https://nguyentruonggiang.id.vn/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <Magnetic>
+                    <p>Axyl</p>
+                  </Magnetic>
+                </a>
               </div>
             </div>
           </div>

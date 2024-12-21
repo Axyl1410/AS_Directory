@@ -1,5 +1,4 @@
-import Card from "@/components/ui/card";
-import { BlogProps } from "@/constant/model";
+import Card, { CardProps } from "@/components/ui/card";
 import { client } from "@/sanity/lib/client";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -25,10 +24,10 @@ const BLOGS_QUERY = `*[_type == "blog" && defined(slug.current)] | order(publish
 const options = { next: { revalidate: 30 } };
 
 export default async function Page() {
-  const blogs = await client.fetch<BlogProps[]>(BLOGS_QUERY, {}, options);
+  const blogs = await client.fetch<CardProps[]>(BLOGS_QUERY, {}, options);
 
   return (
-    <div className="px-5">
+    <div className="min-h-screen px-5">
       <div className="container my-10 w-full">
         <div className="flex flex-col gap-4">
           <div className="flex w-full items-center justify-between">

@@ -1,55 +1,34 @@
-import Card from "@/components/ui/card";
+import Card, { CardProps } from "@/components/ui/card";
 import { LinkPreview } from "@/components/ui/link-preview";
-import { BlogProps } from "@/constant/model";
+import SkeletonImage from "@/components/ui/skeleton-image";
 import Sidebar from "@/layout/sidebar";
 import { client } from "@/sanity/lib/client";
+import { BLOGS_QUERY } from "@/sanity/lib/queries";
 import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const BLOGS_QUERY = `*[_type == "blog" && defined(slug.current)] | order(publishedAt desc)[0...12] {
-  title,
-  slug,
-  view,
-  description,
-  category,
-  image,
-  pitch,
-  _createdAt,
-  author -> {
-    _id,
-    name,
-    username,
-    image
-  }
-}`;
-
-const options = { next: { revalidate: 30 } };
-
 export default async function Home() {
-  const blogs = await client.fetch<BlogProps[]>(BLOGS_QUERY, {}, options);
-  console.log(blogs);
+  const blogs = await client.fetch<CardProps[]>(BLOGS_QUERY, {});
 
   return (
-    <div className="px-5">
+    <div className="min-h-screen px-5">
       <div className="container my-10 flex w-full grid-cols-[300px,1fr] flex-col-reverse gap-5 lg:grid">
         <Sidebar />
         <div className="font-medium text-text dark:text-text-dark">
-          <p className="text-[24px] sm:text-[30px] lg:text-[46px]">
+          <div className="text-[24px] sm:text-[30px] lg:text-[46px]">
             Welcome to my Directory
-            <span className="inline-block">
-              <Image
-                alt=""
+            <span className="mx-2.5 inline-block">
+              <SkeletonImage
+                width="20px"
+                height="20px"
+                className="h-[20px] w-[20px] rounded-full md:h-[30px] md:w-[30px]"
                 src="https://avatars.githubusercontent.com/axyl1410"
-                width={30}
-                height={30}
-                className="mx-2.5 h-[20px] w-[20px] rounded-full md:h-[30px] md:w-[30px]"
-                priority
+                isPriority
               />
             </span>
             I&apos;m Alex and here I document our latest explorations.
-          </p>
+          </div>
 
           <div className="mb-[100px] mt-8 flex gap-2 text-sm">
             <Link href="/blog">

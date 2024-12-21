@@ -1,5 +1,5 @@
-import { Author } from "@/constant/model";
 import { client } from "@/sanity/lib/client";
+import { Author } from "@/types/types";
 import Image from "next/image";
 import { Suspense } from "react";
 
@@ -26,7 +26,7 @@ export default async function Page({
           <p>{author._id}</p>
           <Image
             alt=""
-            src={author.image.trimStart()}
+            src={author?.image?.trimStart() || ""}
             height={200}
             width={200}
           />

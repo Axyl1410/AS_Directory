@@ -1,5 +1,5 @@
-import { Author } from "@/constant/model";
 import { client } from "@/sanity/lib/client";
+import { Author } from "@/types/types";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,7 +19,7 @@ export default async function Page() {
   console.log(authors);
 
   return (
-    <div className="px-5">
+    <div className="min-h-screen px-5">
       <div className="container my-10 w-full">
         {authors.length === 0 ? (
           <div>No user found</div>
@@ -43,7 +43,7 @@ export default async function Page() {
                       alt=""
                       height={40}
                       width={40}
-                      src={author.image.trimStart()}
+                      src={author?.image?.trimStart() || ""}
                       className="aspect-square rounded-full"
                     />
                     <div className="flex">

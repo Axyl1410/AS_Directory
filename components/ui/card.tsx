@@ -1,8 +1,10 @@
-import { BlogProps } from "@/constant/model";
 import { formatDate } from "@/lib/utils";
+import { Author, Blog } from "@/types/types";
 import { Eye } from "lucide-react";
 import Link from "next/link";
 import SkeletonImage from "./skeleton-image";
+
+export type CardProps = Omit<Blog, "author"> & { author?: Author };
 
 const Card = ({
   _id,
@@ -16,7 +18,7 @@ const Card = ({
   pitch,
   slug,
   ...props
-}: BlogProps & Record<string, unknown>) => {
+}: CardProps) => {
   return (
     <div
       key={_id}
@@ -34,39 +36,39 @@ const Card = ({
       </div>
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-2">
-          <Link href={`/user/${author._id}`}>
+          <Link href={`/user/${author?._id}`}>
             <p className="cursor-pointer text-sm font-medium hover:underline">
-              {author.name}
+              {author?.name}
             </p>
           </Link>
-          <Link href={`/blog/${slug.current}`}>
+          <Link href={`/blog/${_id}`}>
             <p className="cursor-pointer text-xl font-semibold hover:underline md:text-2xl">
               {title}
             </p>
           </Link>
         </div>
-        <Link href={`/user/${author._id}`}>
+        <Link href={`/user/${author?._id}`}>
           <SkeletonImage
-            src={image}
+            src={image ?? ""}
             width="40px"
             height="40px"
             className="aspect-square rounded-full object-cover"
           />
         </Link>
       </div>
-      <Link href={`/blog/${slug.current}`}>
+      <Link href={`/blog/${slug?.current}`}>
         <div className="pb-4 text-sm">{description}</div>
         <SkeletonImage
           className="aspect-video rounded-lg object-cover"
           height="150px"
-          src={image}
+          src={image ?? ""}
         />
       </Link>
       <div className="flex items-center justify-between">
         <p className="cursor-pointer text-sm font-medium hover:underline">
           {category}
         </p>
-        <Link href={`/blog/${slug.current}`}>
+        <Link href={`/blog/${slug?.current}`}>
           <button className="rounded-full border border-black bg-black px-4 py-2 text-sm text-white transition-colors duration-200 ease-out hover:bg-background hover:text-black">
             Details
           </button>

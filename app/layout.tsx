@@ -1,5 +1,6 @@
 import ScrollToTop from "@/components/common/scroll-to-top";
 import { cn } from "@/lib/utils";
+import { SanityLive } from "@/sanity/lib/live";
 import "easymde/dist/easymde.min.css";
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
@@ -86,6 +87,7 @@ export default function RootLayout({
             <ScrollToTop />
             {children}
           </ThemeProvider>
+          <SanityLive />
         </SessionProvider>
       </body>
     </html>
