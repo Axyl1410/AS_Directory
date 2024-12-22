@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Sidebar() {
+const Sidebar = () => {
   return (
     <div className="top-[106px] z-10 flex w-[300px] flex-col gap-4 lg:sticky lg:h-[calc(100vh-106px)]">
       {[
@@ -29,4 +29,6 @@ export default function Sidebar() {
       ))}
     </div>
   );
-}
+};
+
+export default Sidebar;

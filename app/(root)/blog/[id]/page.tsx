@@ -1,3 +1,4 @@
+import Loading from "@/components/common/loading";
 import BackButton from "@/components/ui/back-button";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import { formatDate } from "@/lib/utils";
@@ -26,7 +27,7 @@ export default async function Page({
             {!blog ? (
               <div>Blog not found</div>
             ) : (
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loading />}>
                 <div className="flex flex-col gap-4">
                   <BackButton
                     className="flex items-center hover:underline"

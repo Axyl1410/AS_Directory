@@ -1,8 +1,9 @@
+import Loading from "@/components/common/loading";
+import SkeletonImage from "@/components/ui/skeleton-image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ALL_AUTHORS_QUERY } from "@/sanity/lib/queries";
 import { Author } from "@/types/types";
 import { ArrowLeft } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -26,19 +27,18 @@ export default async function Page() {
                 <p>Back</p>
               </Link>
             </div>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loading />}>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {authors.map((author: Author, _id: string) => (
                   <div
                     key={_id}
-                    className="flex items-center gap-2 rounded-sm border border-border bg-white p-4 shadow dark:border-border-dark dark:bg-background-dark"
+                    className="flex items-center gap-2 rounded-sm border border-border bg-background p-4 shadow dark:border-border-dark dark:bg-background-dark"
                   >
-                    <Image
-                      alt=""
-                      height={40}
-                      width={40}
+                    <SkeletonImage
                       src={author?.image?.trimStart() || ""}
                       className="aspect-square rounded-full"
+                      height="40px"
+                      width="40px"
                     />
                     <div className="flex">
                       <p>{author.name}</p>

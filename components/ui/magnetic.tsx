@@ -1,12 +1,7 @@
 "use client";
 import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
-
-export default function Magnetic({
-  children,
-}: {
-  children: React.ReactElement;
-}) {
+const Magnetic = ({ children }: { children: React.ReactElement }) => {
   const magnetic = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,4 +34,6 @@ export default function Magnetic({
   }, []);
 
   return React.cloneElement(children, { ref: magnetic });
-}
+};
+
+export default Magnetic;

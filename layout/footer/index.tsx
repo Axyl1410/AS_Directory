@@ -8,7 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import styles from "./style.module.scss";
 
-export default function index() {
+const Index = () => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -39,7 +39,7 @@ export default function index() {
   return (
     <>
       <motion.div ref={container} className={styles.contact}>
-        <div className={cn("container min-h-screen", styles.body)}>
+        <div className={cn("container", styles.body)}>
           <div className={styles.title}>
             <div>
               <div className={styles.imageContainer}>
@@ -119,4 +119,6 @@ export default function index() {
       </motion.div>
     </>
   );
-}
+};
+
+export default Index;

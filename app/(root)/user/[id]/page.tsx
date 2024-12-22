@@ -1,3 +1,4 @@
+import Loading from "@/components/common/loading";
 import { sanityFetch } from "@/sanity/lib/live";
 import { AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
@@ -19,7 +20,7 @@ export default async function Page({
       {!author ? (
         <div>Author not found</div>
       ) : (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loading />}>
           <p>{author.username}</p>
           <p>{author.name}</p>
           <p>{author._id}</p>

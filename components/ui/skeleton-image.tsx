@@ -1,24 +1,17 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { SkeletonImageProps } from "@/types/props";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-interface SkeletonImageProps {
-  src: string;
-  height?: string;
-  width?: string;
-  className?: string;
-  isPriority?: boolean;
-}
-
-export default function SkeletonImage({
+const SkeletonImage: React.FC<SkeletonImageProps> = ({
   src,
   height = "16rem",
   width = "100%",
   className = "",
   isPriority = false,
-}: SkeletonImageProps) {
+}) => {
   const [imageLoading, setImageLoading] = useState(true);
   const [pulsing, setPulsing] = useState(true);
 
@@ -64,4 +57,5 @@ export default function SkeletonImage({
       </motion.div>
     </div>
   );
-}
+};
+export default SkeletonImage;

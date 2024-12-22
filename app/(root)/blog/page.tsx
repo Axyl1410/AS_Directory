@@ -1,3 +1,4 @@
+import Loading from "@/components/common/loading";
 import Card from "@/components/ui/card";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ALL_BLOGS_QUERY } from "@/sanity/lib/queries";
@@ -26,7 +27,7 @@ export default async function Page() {
           {blogs.length === 0 ? (
             <div>No blog found</div>
           ) : (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loading />}>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {blogs.map((blog: CardProps, _id: string) => (
                   <Card key={_id} {...blog} />

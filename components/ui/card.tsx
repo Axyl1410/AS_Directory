@@ -2,9 +2,10 @@ import { formatDate } from "@/lib/utils";
 import { CardProps } from "@/types/props";
 import { Eye } from "lucide-react";
 import Link from "next/link";
+import React from "react";
 import SkeletonImage from "./skeleton-image";
 
-const Card = ({
+const Card: React.FC<CardProps> = ({
   _id,
   _createdAt,
   view,
@@ -15,7 +16,7 @@ const Card = ({
   title,
   slug,
   ...props
-}: CardProps) => {
+}) => {
   return (
     <div
       key={_id}
