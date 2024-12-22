@@ -1,9 +1,7 @@
 import { defineQuery } from "next-sanity";
 
-//#region posts
-
-export const ALL_BLOGS_QUERY = defineQuery(
-  `*[_type == "blog"]{
+// Common projections
+const BLOG_PROJECTION = `{
   _id,
   title,
   slug,
@@ -13,66 +11,39 @@ export const ALL_BLOGS_QUERY = defineQuery(
   image,
   pitch,
   _createdAt,
-  author -> {
+  "author": author -> {
     _id,
     name,
     username,
     image
   }
-}`,
+}`;
+
+const AUTHOR_PROJECTION = `{
+  _id,
+  name,
+  username,
+  image
+}`;
+
+// Blog queries
+export const ALL_BLOGS_QUERY = defineQuery(
+  `*[_type == "blog"]${BLOG_PROJECTION}`,
 );
 
 export const BLOGS_QUERY = defineQuery(
-  `*[_type == "blog" && defined(slug.current)] | order(publishedAt desc)[0...12] {
-  _id,
-  title,
-  slug,
-  view,
-  description,
-  category,
-  image,
-  pitch,
-  _createdAt,
-  author -> {
-    _id,
-    name,
-    username,
-    image
-  }
-}`,
+  `*[_type == "blog" && defined(slug.current)] | order(publishedAt desc)[0...12]${BLOG_PROJECTION}`,
 );
 
 export const BLOG_BY_ID_QUERY = defineQuery(
-  `*[_type == "blog" && _id == $id][0]{
-  _id,
-  title,
-  slug,
-  view,
-  description,
-  category,
-  image,
-  pitch,
-  _createdAt,
-  author -> {
-    _id,
-    name,
-    username,
-    image
-  }
-}`,
+  `*[_type == "blog" && _id == $id][0]${BLOG_PROJECTION}`,
 );
 
-//#region author
-
+// Author queries
 export const ALL_AUTHORS_QUERY = defineQuery(
-  `*[_type == "author"]{
-  _id,
-  username,
-  name,
-  image
-}`,
+  `*[_type == "author"]${AUTHOR_PROJECTION}`,
 );
 
 export const AUTHOR_BY_ID_QUERY = defineQuery(
-  `*[_type == "author" && _id == $id][0]`,
+  `*[_type == "author" && _id == $id][0]${AUTHOR_PROJECTION}`,
 );

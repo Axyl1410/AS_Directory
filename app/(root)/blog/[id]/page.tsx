@@ -4,6 +4,7 @@ import { formatDate } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/live";
 import { BLOG_BY_ID_QUERY } from "@/sanity/lib/queries";
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 import { Suspense } from "react";
 
 export default async function Page({
@@ -35,16 +36,21 @@ export default async function Page({
                     <p>Back</p>
                   </BackButton>
                   <div className="flex items-center gap-4">
-                    <SkeletonImage
-                      src={blog?.author?.image ?? ""}
-                      height="40px"
-                      width="40px"
-                      className="aspect-square rounded-full"
-                    />
+                    <Link href={`/user/${blog.author?._id}`}>
+                      <SkeletonImage
+                        src={blog?.author?.image ?? ""}
+                        height="40px"
+                        width="40px"
+                        className="aspect-square rounded-full"
+                      />
+                    </Link>
                     <div className="flex flex-col gap-1">
-                      <p className="text-sm font-medium">
-                        {blog.author?.name ?? ""} {blog.author?.username ?? ""}
-                      </p>
+                      <Link href={`/user/${blog.author?._id}`}>
+                        <p className="text-sm font-medium">
+                          {blog.author?.name ?? ""}{" "}
+                          {blog.author?.username ?? ""}
+                        </p>
+                      </Link>
                       <p className="text-xs text-neutral-500">
                         {formatDate(blog._createdAt)}
                       </p>

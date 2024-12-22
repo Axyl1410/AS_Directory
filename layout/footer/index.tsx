@@ -5,7 +5,7 @@ import Rounded from "@/components/ui/rounded-button";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import { cn } from "@/lib/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./style.module.scss";
 
 export default function index() {
@@ -18,15 +18,23 @@ export default function index() {
   const rotate = useTransform(scrollYProgress, [0, 1], [120, 90]);
 
   const getVietnamTime = () => {
-    const options = {
+    return new Intl.DateTimeFormat("en-US", {
       timeZone: "Asia/Ho_Chi_Minh",
       hour12: true,
-      hour: "2-digit" as "2-digit",
-      minute: "2-digit" as "2-digit",
-      timeZoneName: "short" as "short",
-    };
-    return new Intl.DateTimeFormat("en-US", options).format(new Date());
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZoneName: "short",
+    }).format(new Date());
   };
+  const [vietnamTime, setVietnamTime] = useState(getVietnamTime());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVietnamTime(getVietnamTime());
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -76,7 +84,7 @@ export default function index() {
               </div>
               <div>
                 <h3>Vietnam</h3>
-                <p>{getVietnamTime()}</p>
+                <p>{vietnamTime}</p>
               </div>
             </div>
             <div className="flex w-full justify-between md:block md:w-auto">

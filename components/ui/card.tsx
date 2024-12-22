@@ -13,7 +13,6 @@ const Card = ({
   image,
   category,
   title,
-  pitch,
   slug,
   ...props
 }: CardProps) => {
@@ -47,14 +46,14 @@ const Card = ({
         </div>
         <Link href={`/user/${author?._id}`}>
           <SkeletonImage
-            src={image ?? ""}
+            src={author?.image ?? ""}
             width="40px"
             height="40px"
             className="aspect-square rounded-full object-cover"
           />
         </Link>
       </div>
-      <Link href={`/blog/${slug?.current}`}>
+      <Link href={`/blog/${_id}`}>
         <div className="pb-4 text-sm">{description}</div>
         <SkeletonImage
           className="aspect-video rounded-lg object-cover"
@@ -66,13 +65,12 @@ const Card = ({
         <p className="cursor-pointer text-sm font-medium hover:underline">
           {category}
         </p>
-        <Link href={`/blog/${slug?.current}`}>
+        <Link href={`/blog/${_id}`}>
           <button className="rounded-full border border-black bg-black px-4 py-2 text-sm text-white transition-colors duration-200 ease-out hover:bg-background hover:text-black">
             Details
           </button>
         </Link>
       </div>
-      <div className="sr-only">{pitch}</div>
     </div>
   );
 };
