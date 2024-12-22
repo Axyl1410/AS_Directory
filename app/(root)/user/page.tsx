@@ -1,3 +1,4 @@
+import Loading from "@/components/common/loading";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ALL_AUTHORS_QUERY } from "@/sanity/lib/queries";
@@ -26,7 +27,7 @@ export default async function Page() {
                 <p>Back</p>
               </Link>
             </div>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loading />}>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {authors.map((author: Author, _id: string) => (
                   <div

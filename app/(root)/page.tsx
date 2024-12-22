@@ -1,3 +1,4 @@
+import Loading from "@/components/common/loading";
 import Card from "@/components/ui/card";
 import { LinkPreview } from "@/components/ui/link-preview";
 import SkeletonImage from "@/components/ui/skeleton-image";
@@ -53,7 +54,7 @@ export default async function Home() {
                 <p className="text-link hover:underline">See all</p>
               </Link>
             </div>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loading />}>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {blogs.map((blog: CardProps, _id: string) => (
                   <Card key={_id} {...blog} />
