@@ -1,11 +1,7 @@
 "use client";
 
+import { BackButtonProps } from "@/types/props";
 import { useRouter } from "next/navigation";
-
-interface BackButtonProps {
-  children: React.ReactNode;
-  [key: string]: unknown;
-}
 
 export default function BackButton({ children, ...props }: BackButtonProps) {
   const router = useRouter();

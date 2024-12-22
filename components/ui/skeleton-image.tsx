@@ -1,16 +1,9 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { SkeletonImageProps } from "@/types/props";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
-interface SkeletonImageProps {
-  src: string;
-  height?: string;
-  width?: string;
-  className?: string;
-  isPriority?: boolean;
-}
 
 export default function SkeletonImage({
   src,
