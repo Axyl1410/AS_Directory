@@ -1,30 +1,10 @@
-import { CardProps } from "@/components/ui/card";
+import BackButton from "@/components/ui/back-button";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import { formatDate } from "@/lib/utils";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
+import { BLOG_BY_ID_QUERY } from "@/sanity/lib/queries";
 import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
 import { Suspense } from "react";
-
-const BLOG_QUERY = `*[_type == "blog" && _id == $id][0]{
-  _id,
-  title,
-  slug,
-  view,
-  description,
-  category,
-  image,
-  pitch,
-  _createdAt,
-  author -> {
-    _id,
-    name,
-    username,
-    image
-  }
-}`;
-
-const options = { next: { revalidate: 30 } };
 
 export default async function Page({
   params,
@@ -32,7 +12,10 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const blog = await client.fetch<CardProps>(BLOG_QUERY, { id }, options);
+  const { data: blog } = await sanityFetch({
+    query: BLOG_BY_ID_QUERY,
+    params: { id },
+  });
 
   return (
     <>
@@ -44,10 +27,13 @@ export default async function Page({
             ) : (
               <Suspense fallback={<div>Loading...</div>}>
                 <div className="flex flex-col gap-4">
-                  <Link className="flex items-center hover:underline" href="/">
+                  <BackButton
+                    className="flex items-center hover:underline"
+                    href="/"
+                  >
                     <ArrowLeft size={16} />
                     <p>Back</p>
-                  </Link>
+                  </BackButton>
                   <div className="flex items-center gap-4">
                     <SkeletonImage
                       src={blog?.author?.image ?? ""}

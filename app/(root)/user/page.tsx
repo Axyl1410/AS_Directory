@@ -1,22 +1,16 @@
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
+import { ALL_AUTHORS_QUERY } from "@/sanity/lib/queries";
 import { Author } from "@/types/types";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const AUTHOR_QUERY = `*[ _type == "author" ] {
-  _id,
-  username,
-  name,
-  image
-}`;
-
-const options = { next: { revalidate: 30 } };
-
 export default async function Page() {
-  const authors = await client.fetch<Author[]>(AUTHOR_QUERY, {}, options);
-  console.log(authors);
+  const { data: authors } = await sanityFetch({
+    query: ALL_AUTHORS_QUERY,
+    params: {},
+  });
 
   return (
     <div className="min-h-screen px-5">
@@ -34,7 +28,7 @@ export default async function Page() {
             </div>
             <Suspense fallback={<div>Loading...</div>}>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {authors.map((author, _id) => (
+                {authors.map((author: Author, _id: string) => (
                   <div
                     key={_id}
                     className="flex items-center gap-2 rounded-sm border border-border bg-white p-4 shadow dark:border-border-dark dark:bg-background-dark"

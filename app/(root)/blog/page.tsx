@@ -1,30 +1,16 @@
-import Card, { CardProps } from "@/components/ui/card";
-import { client } from "@/sanity/lib/client";
+import Card from "@/components/ui/card";
+import { sanityFetch } from "@/sanity/lib/live";
+import { ALL_BLOGS_QUERY } from "@/sanity/lib/queries";
+import { CardProps } from "@/types/props";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const BLOGS_QUERY = `*[_type == "blog" && defined(slug.current)] | order(publishedAt desc) {
-  title,
-  slug,
-  view,
-  description,
-  category,
-  image,
-  pitch,
-  _createdAt,
-  author -> {
-    _id,
-    name,
-    username,
-    image
-  }
-}`;
-
-const options = { next: { revalidate: 30 } };
-
 export default async function Page() {
-  const blogs = await client.fetch<CardProps[]>(BLOGS_QUERY, {}, options);
+  const { data: blogs } = await sanityFetch({
+    query: ALL_BLOGS_QUERY,
+    params: {},
+  });
 
   return (
     <div className="min-h-screen px-5">
@@ -42,7 +28,7 @@ export default async function Page() {
           ) : (
             <Suspense fallback={<div>Loading...</div>}>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {blogs.map((blog, _id) => (
+                {blogs.map((blog: CardProps, _id: string) => (
                   <Card key={_id} {...blog} />
                 ))}
               </div>

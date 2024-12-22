@@ -1,11 +1,7 @@
-import { client } from "@/sanity/lib/client";
-import { Author } from "@/types/types";
+import { sanityFetch } from "@/sanity/lib/live";
+import { AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
 import { Suspense } from "react";
-
-const AUTHOR_QUERY = `*[_type == "author" && _id == $id][0]`;
-
-const options = { next: { revalidate: 30 } };
 
 export default async function Page({
   params,
@@ -13,7 +9,10 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const author = await client.fetch<Author>(AUTHOR_QUERY, { id }, options);
+  const { data: author } = await sanityFetch({
+    query: AUTHOR_BY_ID_QUERY,
+    params: { id },
+  });
 
   return (
     <>

@@ -2,6 +2,7 @@
 
 import Magnetic from "@/components/ui/magnetic";
 import Rounded from "@/components/ui/rounded-button";
+import SkeletonImage from "@/components/ui/skeleton-image";
 import { cn } from "@/lib/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -34,8 +35,7 @@ export default function index() {
           <div className={styles.title}>
             <div>
               <div className={styles.imageContainer}>
-                <img
-                  alt={"image"}
+                <SkeletonImage
                   src={`https://avatars.githubusercontent.com/Axyl1410`}
                 />
               </div>

@@ -1,10 +1,8 @@
 import { formatDate } from "@/lib/utils";
-import { Author, Blog } from "@/types/types";
+import { CardProps } from "@/types/props";
 import { Eye } from "lucide-react";
 import Link from "next/link";
 import SkeletonImage from "./skeleton-image";
-
-export type CardProps = Omit<Blog, "author"> & { author?: Author };
 
 const Card = ({
   _id,
