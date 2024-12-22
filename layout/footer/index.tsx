@@ -8,7 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import styles from "./style.module.scss";
 
-const index = () => {
+const Index = () => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -113,4 +113,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

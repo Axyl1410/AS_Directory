@@ -5,7 +5,7 @@ import React, { useEffect, useRef } from "react";
 import Magnetic from "../magnetic";
 import styles from "./style.module.scss";
 
-const index: React.FC<RoundedButtonProps> = ({
+const Index: React.FC<RoundedButtonProps> = ({
   children,
   backgroundColor = "#455CE9",
   ...attributes
@@ -70,4 +70,4 @@ const index: React.FC<RoundedButtonProps> = ({
   );
 };
 
-export default index;
+export default Index;
