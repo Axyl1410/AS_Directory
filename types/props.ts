@@ -26,6 +26,12 @@ export interface BackButtonProps {
   [key: string]: unknown;
 }
 
+export interface RoundedButtonProps {
+  children: React.ReactNode;
+  backgroundColor?: string;
+  [key: string]: unknown;
+}
+
 export type CardProps = Omit<Blog, "author"> & { author?: Author };
 
 export type LinkPreviewProps = {

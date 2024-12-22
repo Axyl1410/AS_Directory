@@ -1,21 +1,19 @@
 "use client";
+import { RoundedButtonProps } from "@/types/props";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Magnetic from "../magnetic";
 import styles from "./style.module.scss";
 
-export default function Index({
+const index: React.FC<RoundedButtonProps> = ({
   children,
   backgroundColor = "#455CE9",
   ...attributes
-}: {
-  children: React.ReactNode;
-  backgroundColor?: string;
-  [key: string]: unknown;
-}) {
+}) => {
   const circle = useRef(null);
   const timeline = useRef<gsap.core.Timeline | null>(null);
   let timeoutId = null as NodeJS.Timeout | null;
+
   useEffect(() => {
     timeline.current = gsap.timeline({ paused: true });
     if (timeline.current) {
@@ -70,4 +68,6 @@ export default function Index({
       </div>
     </Magnetic>
   );
-}
+};
+
+export default index;
