@@ -8,6 +8,7 @@
   position: relative;
   margin-top: 20px;
   border-top: 1px solid rgb(41, 40, 46);
+  padding: 0 20px;
 
   .body {
     padding: 100px 0 20px 0;
@@ -17,7 +18,6 @@
     .title {
       border-bottom: 1px solid rgb(134, 134, 134);
       padding-bottom: 100px;
-      margin: 0 150px;
       position: relative;
 
       div {
@@ -140,26 +140,11 @@
   }
 }
 
-.circleContainer {
-  position: relative;
-
-  .circle {
-    height: 1550%;
-    width: 120%;
-    left: -10%;
-    border-radius: 0 0 50% 50%;
-    border-bottom: #f2f2f2 1px solid;
-    z-index: 1;
-    position: absolute;
-  }
-}
-
 @media (max-width: 768px) {
   .contact {
     .body {
       .title {
         padding-bottom: 100px;
-        margin: 0 50px;
 
         div {
           .imageContainer {
@@ -190,7 +175,6 @@
 
       .info {
         flex-direction: column;
-        padding: 14px;
 
         div {
           gap: 5px;
@@ -217,10 +201,6 @@
           width: 100px;
           height: 100px;
         }
-      }
-
-      .info {
-        padding: 0 14px;
       }
     }
   }

@@ -1,22 +1,17 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { SkeletonImageProps } from "@/types/props";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-interface SkeletonImageProps {
-  src: string;
-  height?: string;
-  width?: string;
-  className?: string;
-}
-
-export default function SkeletonImage({
+const SkeletonImage: React.FC<SkeletonImageProps> = ({
   src,
   height = "16rem",
   width = "100%",
   className = "",
-}: SkeletonImageProps) {
+  isPriority = false,
+}) => {
   const [imageLoading, setImageLoading] = useState(true);
   const [pulsing, setPulsing] = useState(true);
 
@@ -34,7 +29,7 @@ export default function SkeletonImage({
   return (
     <div
       className={cn(
-        `overflow-hidden bg-[#ccc] shadow-md`,
+        `overflow-hidden bg-[#ccc] shadow-sm`,
         pulsing ? "animate-pulse" : "",
         className,
         `w-[${width}] h-[${height}]`,
@@ -57,8 +52,10 @@ export default function SkeletonImage({
           src={src.trimStart()}
           fill
           className={cn("static block object-cover", className)}
+          {...(isPriority && { priority: true })}
         />
       </motion.div>
     </div>
   );
-}
+};
+export default SkeletonImage;

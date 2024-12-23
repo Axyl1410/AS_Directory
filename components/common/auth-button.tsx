@@ -2,8 +2,9 @@
 
 import { LogOut, UserIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
+import SkeletonImage from "../ui/skeleton-image";
 
 const AuthButton = () => {
   const { data: session } = useSession();
@@ -11,22 +12,24 @@ const AuthButton = () => {
     <>
       {session && session.user ? (
         <div className="flex w-full items-center justify-between p-2.5 pl-0">
-          <Link href="/profile">
-            <div className="flex items-center gap-2.5">
-              <Image
-                alt="avt"
-                src={`${session.user.image}`}
-                height={24}
-                width={24}
-                className="rounded-full object-cover"
-                priority
-              />
-              <p>{session.user.name}</p>
-            </div>
-          </Link>
-          <Link href="/api/auth/signout">
-            <LogOut size={22} strokeWidth={1} />
-          </Link>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Link href="/profile">
+              <div className="flex items-center gap-2.5">
+                <div className="h-6 w-6">
+                  <SkeletonImage
+                    src={`${session.user.image}`}
+                    height="24px"
+                    width="24px"
+                    className="aspect-square rounded-full object-cover"
+                  />
+                </div>
+                <p>{session.user.name}</p>
+              </div>
+            </Link>
+            <Link href="/api/auth/signout">
+              <LogOut size={22} strokeWidth={1} />
+            </Link>
+          </Suspense>
         </div>
       ) : (
         <Link href="/api/auth/signin" className="w-full">

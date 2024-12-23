@@ -3,9 +3,9 @@
 import AuthButton from "@/components/common/auth-button";
 import ThemeSwitcher from "@/components/theme/theme-switcher";
 import Sidebar from "@/components/ui/sidebar";
+import SkeletonImage from "@/components/ui/skeleton-image";
 import useToggle from "@/hooks/use-state-toggle";
 import { ArrowRight, Menu } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -16,13 +16,12 @@ const Navbar = () => {
       <div className="fixed z-50 h-[66px] w-full border-b border-border bg-background px-5 py-4 text-text transition-colors duration-300 ease-out dark:border-border-dark dark:bg-background-dark dark:text-text-dark">
         <div className="container flex w-full justify-between">
           <Link href="/">
-            <Image
-              src={"https://avatars.githubusercontent.com/axyl1410"}
-              alt="logo"
-              height={35}
-              width={35}
-              className="rounded-full object-cover"
-              priority
+            <SkeletonImage
+              src="https://avatars.githubusercontent.com/axyl1410"
+              width="35px"
+              height="35px"
+              className="aspect-square rounded-full"
+              isPriority
             />
           </Link>
           <div

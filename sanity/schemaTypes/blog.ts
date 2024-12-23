@@ -22,10 +22,5 @@ export const blog = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({ name: "pitch", type: "markdown" }),
-    // defineField({
-    //   name: "publishedAt",
-    //   type: "datetime",
-    //   initialValue: () => new Date().toISOString(),
-    // }),
   ],
 });

@@ -1,17 +1,12 @@
 "use client";
 
+import { ModalProps } from "@/types/props";
 import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import React, { useCallback } from "react";
 import ReactDOM from "react-dom";
 
-interface sidebarProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-}
-
-const Sidebar: React.FC<sidebarProps> = ({ isOpen, onClose, children }) => {
+const Sidebar: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   const handleBackdropClick = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (e.target === e.currentTarget) onClose();

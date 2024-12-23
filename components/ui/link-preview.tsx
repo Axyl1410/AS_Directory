@@ -1,5 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { LinkPreviewProps } from "@/types/props";
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
 import {
   AnimatePresence,
@@ -10,20 +11,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { encode } from "qss";
-import React from "react";
-
-type LinkPreviewProps = {
-  children: React.ReactNode;
-  url: string;
-  className?: string;
-  width?: number;
-  height?: number;
-  quality?: number;
-  layout?: string;
-} & (
-  | { isStatic: true; imageSrc: string }
-  | { isStatic?: false; imageSrc?: never }
-);
+import React, { useEffect, useState } from "react";
 
 export const LinkPreview = ({
   children,
@@ -54,11 +42,11 @@ export const LinkPreview = ({
     src = imageSrc;
   }
 
-  const [isOpen, setOpen] = React.useState(false);
+  const [isOpen, setOpen] = useState(false);
 
-  const [isMounted, setIsMounted] = React.useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setIsMounted(true);
   }, []);
 
