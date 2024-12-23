@@ -26,9 +26,10 @@ const Index = () => {
       timeZoneName: "short",
     }).format(new Date());
   };
-  const [vietnamTime, setVietnamTime] = useState(getVietnamTime());
+  const [vietnamTime, setVietnamTime] = useState<string>("");
 
   useEffect(() => {
+    setVietnamTime(getVietnamTime());
     const interval = setInterval(() => {
       setVietnamTime(getVietnamTime());
     }, 10000);

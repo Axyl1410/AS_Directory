@@ -1,6 +1,14 @@
 import { defineQuery } from "next-sanity";
 
 // Common projections
+const AUTHOR_PROJECTION = `{
+  _id,
+  name,
+  username,
+  image,
+  bio
+}`;
+
 const BLOG_PROJECTION = `{
   _id,
   title,
@@ -11,19 +19,7 @@ const BLOG_PROJECTION = `{
   image,
   pitch,
   _createdAt,
-  "author": author -> {
-    _id,
-    name,
-    username,
-    image
-  }
-}`;
-
-const AUTHOR_PROJECTION = `{
-  _id,
-  name,
-  username,
-  image
+  "author": author -> ${AUTHOR_PROJECTION},
 }`;
 
 // Blog queries
@@ -37,6 +33,10 @@ export const BLOGS_QUERY = defineQuery(
 
 export const BLOG_BY_ID_QUERY = defineQuery(
   `*[_type == "blog" && _id == $id][0]${BLOG_PROJECTION}`,
+);
+
+export const BLOG_BY_AUTHOR_QUERY = defineQuery(
+  `*[_type == "blog" && author -> _id == $id]${BLOG_PROJECTION}`,
 );
 
 // Author queries

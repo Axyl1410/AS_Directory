@@ -14,7 +14,6 @@ const Card: React.FC<CardProps> = ({
   image,
   category,
   title,
-  slug,
   ...props
 }) => {
   return (
@@ -55,7 +54,7 @@ const Card: React.FC<CardProps> = ({
         </Link>
       </div>
       <Link href={`/blog/${_id}`}>
-        <div className="pb-4 text-sm">{description}</div>
+        <div className="mb-4 line-clamp-5 text-sm">{description}</div>
         <SkeletonImage
           className="aspect-video rounded-lg object-cover"
           height="150px"

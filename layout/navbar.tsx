@@ -101,23 +101,12 @@ const Navbar = () => {
             {
               title: "Profile",
               content: (
-                <>
-                  <div
-                    className="flex w-full items-center pl-6 transition-colors hover:bg-border dark:hover:bg-border-dark"
-                    onClick={sidebar.close}
-                  >
-                    <AuthButton />
-                  </div>
-                  <div
-                    className="flex items-center gap-3.5 pl-6 transition-colors hover:bg-border dark:hover:bg-border-dark"
-                    onClick={sidebar.close}
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <ArrowRight size={22} strokeWidth={1} />
-                      <p>Create</p>
-                    </div>
-                  </div>
-                </>
+                <div
+                  className="flex w-full items-center pl-6 transition-colors hover:bg-border dark:hover:bg-border-dark"
+                  onClick={sidebar.close}
+                >
+                  <AuthButton />
+                </div>
               ),
             },
           ].map((section, index) => (
