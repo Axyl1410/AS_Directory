@@ -1,5 +1,6 @@
 import Loading from "@/components/common/loading";
 import BackButton from "@/components/ui/back-button";
+import SearchForm from "@/components/ui/search-form";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ALL_AUTHORS_QUERY } from "@/sanity/lib/queries";
@@ -8,10 +9,17 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ query?: string }>;
+}) {
+  const query = (await searchParams).query;
+  const params = { search: query || null };
+
   const { data: authors } = await sanityFetch({
     query: ALL_AUTHORS_QUERY,
-    params: {},
+    params,
   });
 
   return (
@@ -20,7 +28,8 @@ export default async function Page() {
         <div>No user found</div>
       ) : (
         <div className="flex flex-col gap-4">
-          <div className="flex w-full items-center justify-between">
+          <SearchForm query={query} type="author" />
+          <div className="mb-4 flex w-full items-center justify-between border-b pb-4">
             <p className="text-xl font-medium md:text-2xl">All Users</p>
             <BackButton className="flex items-center hover:underline" href="/">
               <ArrowLeft size={16} />

@@ -14,6 +14,7 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+
   const { data: blog } = await sanityFetch({
     query: BLOG_BY_ID_QUERY,
     params: { id },

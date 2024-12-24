@@ -48,6 +48,9 @@ export default {
           DEFAULT: "#4f576c",
           dark: "#98a1b6",
         },
+        search: {
+          DEFAULT: "#f5f4f4",
+        },
       },
       fontFamily: {
         "work-sans": ["var(--font-work-sans)"],
