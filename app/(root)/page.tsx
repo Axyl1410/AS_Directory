@@ -1,8 +1,8 @@
 import Loading from "@/components/common/loading";
+import Snow from "@/components/holiday/snow";
 import Card from "@/components/ui/card";
 import { LinkPreview } from "@/components/ui/link-preview";
 import SkeletonImage from "@/components/ui/skeleton-image";
-import Snow from "@/components/ui/snow";
 import Sidebar from "@/layout/sidebar";
 import { sanityFetch } from "@/sanity/lib/live";
 import { BLOGS_QUERY } from "@/sanity/lib/queries";
