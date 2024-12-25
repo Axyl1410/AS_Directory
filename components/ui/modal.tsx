@@ -1,11 +1,16 @@
 "use client";
 
-import { ModalProps } from "@/types/props";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import dynamic from "next/dynamic";
 import React, { useCallback } from "react";
 import ReactDOM from "react-dom";
+
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   const handleBackdropClick = useCallback(

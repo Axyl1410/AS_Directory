@@ -1,9 +1,16 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { SkeletonImageProps } from "@/types/props";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+
+interface SkeletonImageProps {
+  src: string;
+  height?: string;
+  width?: string;
+  className?: string;
+  isPriority?: boolean;
+}
 
 const SkeletonImage: React.FC<SkeletonImageProps> = ({
   src,
@@ -33,7 +40,7 @@ const SkeletonImage: React.FC<SkeletonImageProps> = ({
         pulsing ? "animate-pulse" : "",
         className,
       )}
-      style={{  width }}
+      style={{ width }}
     >
       <motion.div
         initial={{ height: "0px", opacity: 0 }}
@@ -51,7 +58,7 @@ const SkeletonImage: React.FC<SkeletonImageProps> = ({
           onLoad={imageLoaded}
           src={src.trimStart()}
           fill
-          className={cn("static block object-cover", className)}
+          className={cn("static object-cover", className)}
           {...(isPriority && { priority: true })}
         />
       </motion.div>

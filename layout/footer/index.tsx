@@ -46,6 +46,8 @@ const Index = () => {
               <div className={styles.imageContainer}>
                 <SkeletonImage
                   src={`https://avatars.githubusercontent.com/Axyl1410`}
+                  height="100px"
+                  width='100px'
                 />
               </div>
               <h2>Let's work</h2>

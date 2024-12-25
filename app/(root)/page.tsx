@@ -21,9 +21,9 @@ export default async function Home() {
           Welcome to my Directory
           <span className="mx-2.5 inline-block">
             <SkeletonImage
-              width="20px"
-              height="20px"
-              className="h-[20px] w-[20px] rounded-full md:h-[30px] md:w-[30px]"
+              width="25px"
+              height="25px"
+              className="h-[25px] w-[25px] rounded-full"
               src="https://avatars.githubusercontent.com/axyl1410"
               isPriority
             />
