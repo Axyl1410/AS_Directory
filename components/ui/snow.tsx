@@ -2,7 +2,8 @@
 
 import { cn } from "@/lib/utils";
 import { Snowflake } from "lucide-react";
-import { useEffect } from "react";
+import dynamic from "next/dynamic";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import style from "./style.module.scss";
 
@@ -36,4 +37,8 @@ const Snow = () => {
   );
 };
 
-export default Snow;
+Snow.displayName = "Snow";
+
+export default dynamic(() => Promise.resolve(React.memo(Snow)), {
+  ssr: false,
+});
