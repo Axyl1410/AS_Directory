@@ -1,9 +1,14 @@
 "use client";
-import { RoundedButtonProps } from "@/types/props";
 import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
 import Magnetic from "../magnetic";
 import styles from "./style.module.scss";
+
+interface RoundedButtonProps {
+  children: React.ReactNode;
+  backgroundColor?: string;
+  [key: string]: unknown;
+}
 
 const Index: React.FC<RoundedButtonProps> = ({
   children,

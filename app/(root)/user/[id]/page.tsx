@@ -13,6 +13,7 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+
   const { data: author } = await sanityFetch({
     query: AUTHOR_BY_ID_QUERY,
     params: { id },

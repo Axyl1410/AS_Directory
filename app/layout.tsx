@@ -81,10 +81,10 @@ export default function RootLayout({
           workSans.variable,
         )}
       >
-        <Toaster closeButton richColors position="top-left" />
         <SessionProvider>
           <ThemeProvider>
             <ScrollToTop />
+            <Toaster closeButton richColors position="top-left" />
             {children}
           </ThemeProvider>
           <SanityLive />

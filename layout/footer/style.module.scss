@@ -11,7 +11,7 @@
   padding: 0 20px;
 
   .body {
-    padding: 100px 0 20px 0;
+    padding: 50px 0 20px 0;
     width: 100%;
     background-color: #15171b;
 
@@ -19,6 +19,8 @@
       border-bottom: 1px solid rgb(134, 134, 134);
       padding-bottom: 100px;
       position: relative;
+      width: 80%;
+      margin: 0 auto;
 
       div {
         display: flex;
@@ -42,7 +44,7 @@
       }
 
       h2 {
-        font-size: 5vw;
+        font-size: 70px;
         margin: 0;
         font-weight: 300;
       }
@@ -127,7 +129,7 @@
         div {
           display: flex;
           flex-direction: column;
-          gap: 15px;
+          gap: 10px;
         }
 
         h3 {
@@ -145,6 +147,7 @@
     .body {
       .title {
         padding-bottom: 100px;
+        width: 100%;
 
         div {
           .imageContainer {
@@ -154,7 +157,7 @@
         }
 
         h2 {
-          font-size: 7vw;
+          font-size: 50px;
         }
 
         .buttonContainer {
@@ -197,9 +200,17 @@
           top: calc(100% - 55px);
         }
 
+        h2 {
+          font-size: 30px;
+        }
+
         .button {
           width: 100px;
           height: 100px;
+
+          p {
+            font-size: 14px;
+          }
         }
       }
     }

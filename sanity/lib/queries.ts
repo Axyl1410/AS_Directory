@@ -24,7 +24,7 @@ const BLOG_PROJECTION = `{
 
 // Blog queries
 export const ALL_BLOGS_QUERY = defineQuery(
-  `*[_type == "blog"]${BLOG_PROJECTION}`,
+  `*[_type == "blog" && !defined($search) || title match $search || category match $search || author -> name match $search]${BLOG_PROJECTION}`,
 );
 
 export const BLOGS_QUERY = defineQuery(
@@ -41,7 +41,7 @@ export const BLOG_BY_AUTHOR_QUERY = defineQuery(
 
 // Author queries
 export const ALL_AUTHORS_QUERY = defineQuery(
-  `*[_type == "author"]${AUTHOR_PROJECTION}`,
+  `*[_type == "author" && !defined($search) || username match $search || name match $search]${AUTHOR_PROJECTION}`,
 );
 
 export const AUTHOR_BY_ID_QUERY = defineQuery(

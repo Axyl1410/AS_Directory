@@ -44,7 +44,7 @@ const Card: React.FC<CardProps> = ({
             </p>
           </Link>
         </div>
-        <Link href={`/user/${author?._id}`}>
+        <Link href={`/user/${author?._id}`} className='h-10 w-10'>
           <SkeletonImage
             src={author?.image ?? ""}
             width="40px"
