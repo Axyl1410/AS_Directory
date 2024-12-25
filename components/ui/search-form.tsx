@@ -23,7 +23,7 @@ const SearchForm = ({
       <Form
         scroll={false}
         action={type == "blog" ? "/blog" : "/user"}
-        className="flex h-12 w-full items-center border pr-4"
+        className="search-form flex h-12 w-full items-center border pr-4"
       >
         <button
           type="submit"
@@ -34,7 +34,7 @@ const SearchForm = ({
         <div className="ml-4 flex h-full w-full items-center">
           <input
             placeholder="Search by title, category, author and more"
-            className="h-full w-full bg-search outline-none"
+            className="h-full w-full bg-background outline-none dark:bg-background-dark"
             name="query"
             defaultValue={query}
           />

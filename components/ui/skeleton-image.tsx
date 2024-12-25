@@ -32,8 +32,8 @@ const SkeletonImage: React.FC<SkeletonImageProps> = ({
         `overflow-hidden bg-[#ccc] shadow-sm`,
         pulsing ? "animate-pulse" : "",
         className,
-        `w-[${width}] h-[${height}]`,
       )}
+      style={{  width }}
     >
       <motion.div
         initial={{ height: "0px", opacity: 0 }}

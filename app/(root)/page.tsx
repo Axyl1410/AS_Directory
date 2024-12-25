@@ -47,7 +47,7 @@ export default async function Home() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <div className="flex w-full items-center justify-between">
+          <div className="mb-4 flex w-full items-center justify-between border-b pb-4">
             <p className="text-xl font-medium md:text-2xl">Recent Posts</p>
             <Link href="/blog">
               <p className="text-link hover:underline">See all</p>

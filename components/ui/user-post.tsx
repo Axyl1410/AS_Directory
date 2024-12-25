@@ -1,20 +1,13 @@
 import { sanityFetch } from "@/sanity/lib/live";
 import { BLOG_BY_AUTHOR_QUERY } from "@/sanity/lib/queries";
 import { CardProps } from "@/types/props";
-import { toast } from "sonner";
 import Card from "./card";
 
 const UserPost = async ({ id }: { id: string }) => {
-  let blog = [];
-  try {
-    const { data } = await sanityFetch({
-      query: BLOG_BY_AUTHOR_QUERY,
-      params: { id },
-    });
-    blog = data;
-  } catch (error) {
-    toast.error(`Error fetching user posts: ${error}`);
-  }
+  const { data: blog } = await sanityFetch({
+    query: BLOG_BY_AUTHOR_QUERY,
+    params: { id },
+  });
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

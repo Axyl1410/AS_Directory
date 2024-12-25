@@ -1,11 +1,11 @@
 import Loading from "@/components/common/loading";
+import BackButton from "@/components/ui/back-button";
 import Card from "@/components/ui/card";
 import SearchForm from "@/components/ui/search-form";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ALL_BLOGS_QUERY } from "@/sanity/lib/queries";
 import { CardProps } from "@/types/props";
 import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
 import { Suspense } from "react";
 
 export default async function Page({
@@ -27,10 +27,10 @@ export default async function Page({
         <SearchForm query={query} type="blog" />
         <div className="mb-4 flex w-full items-center justify-between border-b pb-4">
           <p className="text-xl font-medium md:text-2xl">Recent Posts</p>
-          <Link className="flex items-center hover:underline" href="/">
+          <BackButton className="flex items-center hover:underline" href="/">
             <ArrowLeft size={16} />
             <p>Back</p>
-          </Link>
+          </BackButton>
         </div>
         {blogs.length === 0 ? (
           <div>No blog found</div>
