@@ -8,6 +8,14 @@ import ReactDOM from "react-dom";
 import style from "./style.module.scss";
 
 const Snow = () => {
+  const isWinterSeason = () => {
+    const currentMonth = new Date().getMonth() + 1;
+    return currentMonth === 12 || currentMonth === 1;
+  };
+
+  if (!isWinterSeason()) return null;
+  const isSmall = window.innerWidth < 768;
+
   useEffect(() => {
     const container = document.querySelector(`.${style.container}`);
     const flake = document.querySelector(`.${style.flake}`);
@@ -24,7 +32,10 @@ const Snow = () => {
       setTimeout(() => clone.remove(), 8000);
     }
 
-    const interval = setInterval(createFlake, 200);
+    let interval: NodeJS.Timeout;
+
+    if (!isSmall) interval = setInterval(createFlake, 200);
+    else interval = setInterval(createFlake, 500);
 
     return () => clearInterval(interval);
   }, []);
