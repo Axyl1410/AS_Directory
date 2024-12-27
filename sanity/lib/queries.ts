@@ -47,3 +47,9 @@ export const ALL_AUTHORS_QUERY = defineQuery(
 export const AUTHOR_BY_ID_QUERY = defineQuery(
   `*[_type == "author" && _id == $id][0]${AUTHOR_PROJECTION}`,
 );
+
+export const VIEW_BLOG_QUERY = defineQuery(
+  `*[_type == "blog" && _id == $id]{
+    view
+  }`,
+);

@@ -1,5 +1,6 @@
 import BackButton from "@/components/common/back-button";
 import Loading from "@/components/common/loading";
+import View from "@/components/common/view";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import { formatDate } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/live";
@@ -19,6 +20,8 @@ export default async function Page({
     query: BLOG_BY_ID_QUERY,
     params: { id },
   });
+
+  View({ id });
 
   return (
     <div className="flex w-full justify-center">
