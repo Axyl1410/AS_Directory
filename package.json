@@ -39,6 +39,8 @@
     "postcss": "^8.4.49",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
     "sanity-plugin-markdown": "^5.0.0",
     "sass": "^1.83.0",
     "server-only": "^0.0.1",

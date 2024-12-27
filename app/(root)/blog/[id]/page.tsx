@@ -1,10 +1,11 @@
 import BackButton from "@/components/common/back-button";
 import Loading from "@/components/common/loading";
-import View from "@/components/common/view";
+import Remark from "@/components/common/remark";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import { formatDate } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/live";
 import { BLOG_BY_ID_QUERY } from "@/sanity/lib/queries";
+import { incView } from "@/sanity/lib/write-client";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -21,7 +22,7 @@ export default async function Page({
     params: { id },
   });
 
-  View({ id });
+  incView({ id });
 
   return (
     <div className="flex w-full justify-center">
@@ -67,7 +68,7 @@ export default async function Page({
                     className="rounded-sm"
                   />
                 </div>
-                <p className="text-balance">{blog.pitch}</p>
+                <Remark markdownContent={blog.pitch} />
               </div>
             </div>
           </Suspense>
