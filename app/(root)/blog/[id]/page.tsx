@@ -1,5 +1,5 @@
+import BackButton from "@/components/common/back-button";
 import Loading from "@/components/common/loading";
-import BackButton from "@/components/ui/back-button";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import { formatDate } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/live";

@@ -1,5 +1,5 @@
+import BackButton from "@/components/common/back-button";
 import Loading from "@/components/common/loading";
-import BackButton from "@/components/ui/back-button";
 import SearchForm from "@/components/ui/search-form";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import { sanityFetch } from "@/sanity/lib/live";

@@ -2,14 +2,14 @@
 
 import { Search } from "lucide-react";
 import Form from "next/form";
+import React from "react";
 
-const SearchForm = ({
-  query,
-  type,
-}: {
+type SearchFormProps = {
   query?: string;
   type: "author" | "blog";
-}) => {
+};
+
+const SearchForm: React.FC<SearchFormProps> = ({ query, type }) => {
   return (
     <div className="mb-10 flex flex-col items-center gap-4">
       <div className="text-3xl font-bold md:text-4xl">
