@@ -1,11 +1,11 @@
 import BackButton from "@/components/common/back-button";
 import Loading from "@/components/common/loading";
 import Remark from "@/components/common/remark";
+import View from "@/components/common/view";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import { formatDate } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/live";
 import { BLOG_BY_ID_QUERY } from "@/sanity/lib/queries";
-import { incView } from "@/sanity/lib/write-client";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -22,8 +22,6 @@ export default async function Page({
     params: { id },
   });
 
-  incView({ id });
-
   return (
     <div className="flex w-full justify-center">
       <div className="lg:w-4/5">
@@ -31,6 +29,7 @@ export default async function Page({
           <div>Blog not found</div>
         ) : (
           <Suspense fallback={<Loading />}>
+            <View id={id} />
             <div className="flex flex-col gap-4">
               <BackButton
                 className="flex items-center hover:underline"
