@@ -41,7 +41,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         });
 
         if (user) {
-          token.id = user?.id;
+          token.id = user?._id;
         }
       }
 

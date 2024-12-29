@@ -13,7 +13,7 @@ const AuthButton = () => {
       {session && session.user ? (
         <div className="flex w-full items-center justify-between p-2.5 pl-0">
           <Suspense fallback={<div>Loading...</div>}>
-            <Link href="/profile">
+            <Link href={`/user/${session?.id}`}>
               <div className="flex items-center gap-2.5">
                 <div className="h-6 w-6">
                   <SkeletonImage

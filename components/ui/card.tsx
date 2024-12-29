@@ -1,6 +1,5 @@
 import { formatDate } from "@/lib/utils";
 import { CardProps } from "@/types/props";
-import { Eye } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import SkeletonImage from "./skeleton-image";
@@ -8,7 +7,6 @@ import SkeletonImage from "./skeleton-image";
 const Card: React.FC<CardProps> = ({
   _id,
   _createdAt,
-  view,
   author,
   description,
   image,
@@ -26,10 +24,6 @@ const Card: React.FC<CardProps> = ({
         <p className="rounded-full py-2.5 text-sm font-medium transition-colors duration-300 ease-in">
           {formatDate(_createdAt)}
         </p>
-        <div className="flex items-center gap-1">
-          <Eye className="h-5 w-5 md:h-6 md:w-6" strokeWidth={1.5} />
-          <p className="text-sm font-medium">{view}</p>
-        </div>
       </div>
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-2">
@@ -44,7 +38,7 @@ const Card: React.FC<CardProps> = ({
             </p>
           </Link>
         </div>
-        <Link href={`/user/${author?._id}`} className='h-10 w-10'>
+        <Link href={`/user/${author?._id}`} className="h-10 w-10">
           <SkeletonImage
             src={author?.image ?? ""}
             width="40px"

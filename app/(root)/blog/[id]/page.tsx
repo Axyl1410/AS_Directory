@@ -1,7 +1,6 @@
 import BackButton from "@/components/common/back-button";
 import Loading from "@/components/common/loading";
 import Remark from "@/components/common/remark";
-import View from "@/components/common/view";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import { formatDate } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/live";
@@ -29,7 +28,6 @@ export default async function Page({
           <div>Blog not found</div>
         ) : (
           <Suspense fallback={<Loading />}>
-            <View id={id} />
             <div className="flex flex-col gap-4">
               <BackButton
                 className="flex items-center hover:underline"

@@ -13,7 +13,6 @@ const BLOG_PROJECTION = `{
   _id,
   title,
   slug,
-  view,
   description,
   category,
   image,

@@ -139,7 +139,6 @@ export type Blog = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "author";
   };
-  view?: number;
   description?: string;
   category?: string;
   image?: string;
