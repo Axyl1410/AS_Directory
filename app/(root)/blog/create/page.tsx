@@ -1,3 +1,9 @@
+import Loading from "@/components/common/loading";
+
 export default function Page() {
-  return <div>create post</div>;
+  return (
+    <div>
+      <Loading />
+    </div>
+  );
 }
