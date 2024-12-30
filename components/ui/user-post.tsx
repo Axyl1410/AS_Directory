@@ -10,11 +10,17 @@ const UserPost = async ({ id }: { id: string }) => {
   });
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {blog.map((post: CardProps, _id: string) => (
-        <Card key={_id} {...post} />
-      ))}
-    </div>
+    <>
+      {blog.length === 0 ? (
+        <div>No post found</div>
+      ) : (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {blog.map((post: CardProps, _id: string) => (
+            <Card key={_id} {...post} />
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 

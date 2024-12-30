@@ -1,5 +1,5 @@
+import BackButton from "@/components/common/back-button";
 import Loading from "@/components/common/loading";
-import BackButton from "@/components/ui/back-button";
 import Card from "@/components/ui/card";
 import SearchForm from "@/components/ui/search-form";
 import { sanityFetch } from "@/sanity/lib/live";
