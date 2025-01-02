@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 interface ModalProps {
@@ -16,8 +16,20 @@ const Sidebar: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (e.target === e.currentTarget) onClose();
     },
-    [onClose],
+    [onClose]
   );
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   return ReactDOM.createPortal(
     <AnimatePresence>
@@ -49,7 +61,7 @@ const Sidebar: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
         </motion.div>
       )}
     </AnimatePresence>,
-    document.body,
+    document.body
   );
 };
 

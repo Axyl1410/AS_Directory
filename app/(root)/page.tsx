@@ -3,7 +3,6 @@ import Snow from "@/components/holiday/snow";
 import Card from "@/components/ui/card";
 import { LinkPreview } from "@/components/ui/link-preview";
 import SkeletonImage from "@/components/ui/skeleton-image";
-import Sidebar from "@/layout/sidebar";
 import { sanityFetch } from "@/sanity/lib/live";
 import { BLOGS_QUERY } from "@/sanity/lib/queries";
 import { CardProps } from "@/types/props";
@@ -69,3 +68,34 @@ export default async function Home() {
     </>
   );
 }
+
+const Sidebar = () => {
+  return (
+    <div className="top-[106px] z-10 flex w-[300px] flex-col gap-4 lg:sticky lg:h-[calc(100vh-106px)]">
+      {[
+        {
+          title: "Getting Started",
+          children: [
+            {
+              title: "Introduction",
+              link: "/",
+            },
+          ],
+        },
+      ].map((section) => (
+        <details key={section.title} open>
+          <summary className="cursor-pointer font-semibold">
+            {section.title}
+          </summary>
+          {section.children.map((child) => (
+            <Link key={child.link} href={child.link}>
+              <p className="mt-2 w-fit rounded-md bg-linkShade p-2 text-sm text-link dark:bg-nav-dark">
+                {child.title}
+              </p>
+            </Link>
+          ))}
+        </details>
+      ))}
+    </div>
+  );
+};

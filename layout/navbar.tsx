@@ -5,11 +5,25 @@ import ThemeSwitcher from "@/components/theme/theme-switcher";
 import Sidebar from "@/components/ui/sidebar";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import useToggle from "@/hooks/use-state-toggle";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { ArrowRight, Menu } from "lucide-react";
 import Link from "next/link";
 
 const Navbar = () => {
   const sidebar = useToggle();
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  const variants = {
+    initial: { opacity: 0, zIndex: -1 },
+    enter: { opacity: 1, zIndex: 40 },
+    exit: { width: 0 },
+  };
 
   return (
     <>
@@ -34,6 +48,15 @@ const Navbar = () => {
             </span>
           </div>
         </div>
+        <motion.div
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          variants={variants}
+          transition={{ duration: 0.15 }}
+          style={{ scaleX }}
+          className={`absolute bottom-0 left-0 right-0 h-0.5 origin-left bg-sky-500`}
+        />
       </div>
       <Sidebar isOpen={sidebar.isOpen} onClose={sidebar.close}>
         <div className="flex w-full flex-col">

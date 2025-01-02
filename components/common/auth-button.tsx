@@ -8,6 +8,7 @@ import SkeletonImage from "../ui/skeleton-image";
 
 const AuthButton = () => {
   const { data: session } = useSession();
+  console.log(session?.id);
   return (
     <>
       {session && session.user ? (

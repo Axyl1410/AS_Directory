@@ -10,7 +10,7 @@ import style from "./style.module.scss";
 const Snow = () => {
   const isWinterSeason = () => {
     const currentMonth = new Date().getMonth() + 1;
-    return currentMonth === 12 || currentMonth === 1;
+    return currentMonth === 12;
   };
 
   const isSmall = window.innerWidth < 768;
@@ -44,7 +44,7 @@ const Snow = () => {
     <div className={cn("text-slate-300 dark:text-background", style.container)}>
       <Snowflake className={style.flake} />
     </div>,
-    document.body,
+    document.body
   );
 };
 

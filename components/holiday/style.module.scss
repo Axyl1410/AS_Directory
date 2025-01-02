@@ -7,28 +7,32 @@
 }
 
 .flake {
-  $start-y: -20px;
   position: absolute;
-  top: $start-y;
+  top: -20px;
   animation: fall 8s linear forwards;
   height: 20px;
   width: 20px;
 }
 
 @keyframes fall {
-  $rotation: 360deg;
-  $x-offset: 15px;
+  0% {
+    transform: translateY(0) rotate(0) translateX(0);
+  }
 
-  @for $i from 0 through 4 {
-    #{$i * 25 + "%"} {
-      transform: translateY($i * 25vh)
-        rotate($i * $rotation/4)
-        translateX(if($i % 2 == 0, $x-offset, -$x-offset));
-    }
+  25% {
+    transform: translateY(25vh) rotate(90deg) translateX(15px);
+  }
+
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(-15px);
+  }
+
+  75% {
+    transform: translateY(75vh) rotate(270deg) translateX(15px);
   }
 
   100% {
-    transform: translateY(105vh) rotate($rotation);
+    transform: translateY(105vh) rotate(360deg);
   }
 }
 
