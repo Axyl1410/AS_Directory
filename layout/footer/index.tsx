@@ -4,7 +4,7 @@ import Magnetic from "@/components/ui/magnetic";
 import Rounded from "@/components/ui/rounded-button";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import { cn } from "@/lib/utils";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import styles from "./style.module.scss";
 
@@ -47,7 +47,7 @@ const Index = () => {
                 <SkeletonImage
                   src={`https://avatars.githubusercontent.com/Axyl1410`}
                   height="100px"
-                  width='100px'
+                  width="100px"
                 />
               </div>
               <h2>Let's work</h2>

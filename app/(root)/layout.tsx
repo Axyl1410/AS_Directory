@@ -1,7 +1,8 @@
 "use client";
+import BackToTop from "@/components/common/back-to-top";
 import Footer from "@/layout/footer";
 import Navbar from "@/layout/navbar";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 
 export default function DashboardLayout({
@@ -25,6 +26,7 @@ export default function DashboardLayout({
           <div className="container my-10">{children}</div>
         </motion.div>
       </div>
+      <BackToTop />
       <Footer />
     </>
   );

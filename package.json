@@ -34,7 +34,6 @@
     "clsx": "^2.1.1",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.0.3",
-    "framer-motion": "^11.15.0",
     "gsap": "^3.12.5",
     "postcss": "^8.4.49",
     "prettier": "^3.4.2",

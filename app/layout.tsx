@@ -78,7 +78,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen w-screen overflow-x-hidden bg-background font-work-sans text-text antialiased transition-colors duration-300 ease-out dark:bg-background-dark dark:text-text-dark",
-          workSans.variable,
+          workSans.variable
         )}
       >
         <SessionProvider>

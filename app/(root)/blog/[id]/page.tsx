@@ -30,7 +30,7 @@ export default async function Page({
           <Suspense fallback={<Loading />}>
             <div className="flex flex-col gap-4">
               <BackButton
-                className="flex items-center hover:underline"
+                className="flex w-fit items-center hover:underline"
                 href="/"
               >
                 <ArrowLeft size={16} />

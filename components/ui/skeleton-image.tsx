@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -38,7 +38,7 @@ const SkeletonImage: React.FC<SkeletonImageProps> = ({
       className={cn(
         `overflow-hidden bg-[#ccc] shadow-sm`,
         pulsing ? "animate-pulse" : "",
-        className,
+        className
       )}
       style={{ width }}
     >

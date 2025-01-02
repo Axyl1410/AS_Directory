@@ -5,8 +5,8 @@ import ThemeSwitcher from "@/components/theme/theme-switcher";
 import Sidebar from "@/components/ui/sidebar";
 import SkeletonImage from "@/components/ui/skeleton-image";
 import useToggle from "@/hooks/use-state-toggle";
-import { motion, useScroll, useSpring } from "framer-motion";
 import { ArrowRight, Menu } from "lucide-react";
+import { motion, useScroll, useSpring } from "motion/react";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -55,7 +55,7 @@ const Navbar = () => {
           variants={variants}
           transition={{ duration: 0.15 }}
           style={{ scaleX }}
-          className={`absolute bottom-0 left-0 right-0 h-0.5 origin-left bg-sky-500`}
+          className={`absolute bottom-0 left-0 right-0 h-px origin-left bg-sky-500`}
         />
       </div>
       <Sidebar isOpen={sidebar.isOpen} onClose={sidebar.close}>
