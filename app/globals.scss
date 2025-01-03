@@ -16,3 +16,47 @@ html {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+// @media (prefers-color-scheme: dark) {
+//   .w-md-editor-toolbar,
+//   .w-md-editor-content,
+//   .w-md-editor-area,
+//   .w-md-editor-input,
+//   .wmde-markdown,
+//   .wmde-markdown-color {
+//     background-color: #15171b !important;
+//     color: black !important;
+//   }
+// }
+
+@media (prefers-color-scheme: dark) {
+  .w-md-editor-toolbar,
+  .w-md-editor-content,
+  .w-md-editor-area,
+  .w-md-editor-input,
+  .wmde-markdown,
+  .wmde-markdown-color {
+    background-color: #15171b !important;
+    color: white !important;
+  }
+
+  .w-md-editor-toolbar li > button {
+    color: #f4f4f4 !important;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .w-md-editor-toolbar,
+  .w-md-editor-content,
+  .w-md-editor-area,
+  .w-md-editor-input,
+  .wmde-markdown,
+  .wmde-markdown-color {
+    background-color: #f4f4f4 !important;
+    color: black !important;
+  }
+
+  .w-md-editor-toolbar li > button {
+    color: #070b28 !important;
+  }
+}

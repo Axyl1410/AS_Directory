@@ -32,7 +32,7 @@ const BackToTop = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          className="fixed bottom-2 right-2 flex items-center justify-center rounded-lg bg-sky-500 p-1.5 text-white shadow"
+          className="fixed bottom-2 right-2 flex items-center justify-center rounded-lg border border-border bg-background p-1.5 text-black shadow dark:border-white dark:bg-background-dark dark:text-white"
           onClick={handleClick}
         >
           <ChevronUp size={20} />
